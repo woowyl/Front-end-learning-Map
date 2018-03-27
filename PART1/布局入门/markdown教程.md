@@ -16,11 +16,11 @@
 ### 如何使用markdown
 
 ####  1.首先你要有一个能够编辑+预览的编辑器
+我一般用两个：
 
-    我一般用两个：
-
-    - Marp：可支持类PPT样式，用于分享。
-    - vscode ：日常编辑，`shift+command+V` 预览文件
+- Marp：可支持类PPT样式，用于分享。
+- vscode ：日常编辑，`shift+command+V` 预览文件
+- 进阶 [用VS Code打造最佳Markdown编辑器](https://www.jianshu.com/p/18876655b452)
 
 #### 2. 新建xxx.md文档，并用编辑器打开
 
