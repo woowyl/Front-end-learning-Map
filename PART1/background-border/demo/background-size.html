@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background-size</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        body {
+            background: #f6f6f6;
+        }
+        .body {
+            margin: 100px auto;
+            width: 90%;
+        }
+        .code {
+            box-sizing: border-box;
+            font-size: 18px;
+            padding: 10px 20px;
+            width: 100%;
+            background-color: #eee;
+            border: 1px solid #999;
+            margin-bottom: 20px;
+        }
+        .bg-image {
+            width: 100%;
+            height: 150px;
+            background-color: #eee;
+            border: 1px solid #999;
+            background-image: url(images/cat.jpg);
+            background-repeat: no-repeat;
+        }
+        .item-list {
+            padding-left: 50px;
+        }
+        .item-list li {
+            margin-top: 20px;
+        }
+        .background-length {
+            background-size: 300px 100px;
+        }
+        .background-percentage {
+            background-size: 40% 80%;
+        }
+        .background-percentage100 {
+            background-size: 100% 100%;
+        }
+        .background-cover {
+            background-size: cover;
+        }
+        .background-contain {
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS3 background-size: [length|percentage|auto]{1,2}|cover|contain</h1>
+
+    <div class="body">
+        <h3>原始图片</h3>
+        <img src="images/cat.jpg" alt="">
+
+        <h3>背景图尺寸</h3>
+        <div class="code">
+            <code>
+                .background-length {   
+                    background-size: 300px 100px;  
+                }
+            </code>
+        </div>
+        <div class="bg-image background-length">
+            <p></p>
+        </div>
+
+        <h3>背景图-百分比</h3>
+        <ul class="item-list">
+            <li>
+                    <div class="code">
+                            <code>
+                                .background-length {   
+                                    background-size: 40% 80%;
+                                }
+                            </code>
+                        </div>
+                    <div class="bg-image background-percentage">
+                        <p></p>
+                    </div>
+            </li>
+            <li>
+                    <div class="code">
+                            <code>
+                                .background-percentage100 {
+                                    background-size: 100% 100%;
+                                }
+                            </code>
+                        </div>
+                    <div class="bg-image background-percentage100">
+                        <p></p>
+                    </div>
+            </li>
+        </ul>
+
+        <h3>背景图-cover</h3>
+        <div class="code">
+                <code>
+                    .background-length {   
+                        background-size: cover;  
+                    }
+                </code>
+            </div>
+        <div class="bg-image background-cover">
+            <p></p>
+        </div>
+
+        <h3>背景图尺寸-contain</h3>
+        <div class="code">
+                <code>
+                    .background-length {   
+                        background-size: contain;
+                    }
+                </code>
+            </div>
+        <div class="bg-image background-contain">
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>
