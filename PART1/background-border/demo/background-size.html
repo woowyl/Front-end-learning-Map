@@ -16,6 +16,9 @@
             margin: 100px auto;
             width: 90%;
         }
+        .inline-block {
+            display: inline-block;
+        }
         .code {
             box-sizing: border-box;
             font-size: 18px;
@@ -42,6 +45,9 @@
         .background-length {
             background-size: 300px 100px;
         }
+        .background-length-origin {   
+            background-size: 300px 225px;  
+        }
         .background-percentage {
             background-size: 40% 80%;
         }
@@ -62,6 +68,12 @@
     <div class="body">
         <h3>原始图片</h3>
         <img src="images/cat.jpg" alt="">
+        <p class="inline-block" style="margin-left:30px;">DIV 高度：200px; 宽度：100%<br><br><br>图片大小：300px * 225px </p>
+
+        <h3>背景图默认</h3>
+        <div class="bg-image">
+            <p></p>
+        </div>
 
         <h3>背景图尺寸</h3>
         <div class="code">
@@ -72,6 +84,18 @@
             </code>
         </div>
         <div class="bg-image background-length">
+            <p></p>
+        </div>
+
+        <h3>背景图尺寸(与原始大小相同)</h3>
+        <div class="code">
+            <code>
+                .background-length-origin {   
+                    background-size: 300px 225px;  
+                }
+            </code>
+        </div>
+        <div class="bg-image background-length-origin">
             <p></p>
         </div>
 
