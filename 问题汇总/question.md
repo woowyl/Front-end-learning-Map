@@ -1,0 +1,1 @@
+1.rem 下background-size 像素偏移的问题。

@@ -17,21 +17,22 @@
 
     - 雪碧图之间要留有一定的间隙，以防容器大小超过图片大小后出现临近图片
 
-
-
 - 自动化工具  
 
     [spritesmith](https://github.com/Ensighten/spritesmith)
-
+    [createsprite](https://www.npmjs.com/package/createsprite):对rem的支持
 
 ### 雪碧图与rem
 直接使用px定位，没有问题，但是为了兼容不同尺寸的机型，我们在使用rem的过程中出现了问题。
 
 透过现象看本质，是什么造成了这个问题
-1. rem=>px过程中的小数点问题
-2. background-position %的问题
+1. rem=>px过程中造成了的小数点问题
+2. background-position %是在img大小的基础上，img大小yin
+3. background-size 
 
-> 例如： 一个设计稿在750下的设计稿，icon大小为32px。6个icon合成雪碧图后的宽度为225px,高度仍为32培训；
+> 例如： 一个设计稿在750下的设计稿，icon大小为32px。6个icon合成雪碧图后的宽度为225px,高度仍为32；
 
 
-### icon-font的使用
+### 解决办法
+- 如果是单个icon单独使用，可使用icon留边距的方式，小的位移不影响视觉效果。
+- 如果是有点击选中的变化，rem+sprite的方式均会有跳动的现象，可采用单独相同比例的图片或者icon-font的方式

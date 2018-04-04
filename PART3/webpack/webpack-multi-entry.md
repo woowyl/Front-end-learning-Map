@@ -15,3 +15,18 @@
 
 ```
 
+### 如何将多个js打包进html
+
+``` json
+config = {
+    ...
+    plugins: [
+        new HtmlWebpackPlugin({
+            ...
+            chunks: [pageOne, pageTwo, pageThree]
+        });
+    ]
+}
+
+```
+
