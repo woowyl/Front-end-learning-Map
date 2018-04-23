@@ -77,7 +77,7 @@
                 return this.$store.state.obj.message
             },
             set(value) {
-                return this.$store.commit('updateMessage', value)
+                this.$store.commit('updateMessage', value)
             }
         }
     }
