@@ -14,7 +14,7 @@
 1. ### 背景边框
     - [雪碧图](./PART1/background-border/sprite.md)
     - 居中：垂直居中，水平居中
-    - [background-size](./PART1/background)
+    - [background-size](./PART1/background-border/background)
 
 1. ### CSS3入门
     - CSS3 属性
@@ -25,8 +25,8 @@
     - canvas
 
 1. ### JS
-    - [垃圾回收机制](./PART1/垃圾回收机制.md)
-    - [基础类型](./PART1/基础类型.md)
+    - [垃圾回收机制](./PART1/JS基础/垃圾回收机制.md)
+    - [基础类型](./PART1/JS基础/基础类型.md)
 
 1. ### DOM
 
@@ -42,11 +42,11 @@
     - 闭包
     - [source-map](./PART2/JS进阶/source-map.md)
 1. ### ES6 
-    - [箭头函数](./PART2/arrow-fun.md)
-    - [babel](./PART2/babel.md)
-    - [let/const](./PART2/let-const.md)
-    - [promise](./PART2/promise.md)
-    - [module](./PART2/module1-import-export.md)
+    - [箭头函数](./PART2/ES6/arrow-fun.md)
+    - [babel](./PART2/ES6/babel.md)
+    - [let/const](./PART2/ES6/let-const.md)
+    - [promise](./PART2/ES6/promise.md)
+    - [module](./PART2/ES6/module1-import-export.md)
 
 1. ### 事件 移动端
 
