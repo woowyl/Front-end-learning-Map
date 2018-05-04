@@ -23,7 +23,7 @@
 模板|描述
 -|-
 [hash]|模块标识符（module identifier）的hash
-[dhunkhash]|chunk内容的hash
+[chunkhash]|chunk内容的hash
 [name]| 模块名称
 [id]| 模块标识符（module identifier）
 [query]| 模块的query 例如 文件名`?`后面的字符串
