@@ -33,8 +33,34 @@
 
 
 - scrollTop/Left/Bottom/Right  滚动的而距离，想要获取这个值，Dom必须是设置了`overflow:scroll`的元素!!!而不是滚动内的元素
+```html
+   <div class="scroll-wrapper">
+       <ul class="num-list">
+           <li>1</li>
+           <li>2</li>
+           <li>3<li>
+           ....
+       </ul>
+       <p class="bottom-tip"></p>
+   </div>
+```
+
+```CSS
+    .scroll-wrapper {
+        height: 300px;
+        overflow: scroll;
+    }
+
+    .num-list li{
+        list-style: none;
+        height:10px;
+    }
+```
 
 
 - window 不同 $(window).scrollTop() 是`html`相对滚动的位置，无需设置`overflow:scroll`,
 
 - `$(window).scrollTop()`  `$('html').scrollTop()` `$('body').scrollTop()` 的关系
+![](./images/window-scroll.png)
+
+
