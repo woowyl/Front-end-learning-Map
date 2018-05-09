@@ -18,11 +18,35 @@ this只能出现在函数体内，但根据函数的不同形式，有四种不�
 
 ## 1. 纯函数调用
 
-此时this 指向[全局对象](./global.md)
+此时this 指向[全局对象](./global.md);  
+*** <span style="color:red;">注意在严格模式下，this指向了undefined </span>  
+在浏览器环境下，全局对象为windows;
 
+```javascript
+    var a = 1;
+    function test() {
+        var a = 2;
+        console.log(this.a);
+    }
 
+    test();
+```
+
+此时控制台输出的是 `1`
 
 ## 2. 对象方法调用
+
+```javascript
+    var person = {
+        name: 'yuanliang',
+        getName: function(){
+            console.log(this.name);
+        }
+    }
+
+    person.getName();
+```
+
 
 ## 3. 构造函数调用
 
