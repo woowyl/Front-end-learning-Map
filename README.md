@@ -27,7 +27,7 @@
 1. ### JS
     - [垃圾回收机制](./PART1/JS基础/垃圾回收机制.md)
     - [基础类型](./PART1/JS基础/基础类型.md)
-
+    - [冒泡还是捕获](./PART1/JS基础/冒泡还是捕获.md)
 1. ### DOM
 
 1. ### 自适应
@@ -53,7 +53,9 @@
 
 
 1. ### HTTP 与 HTTPS
-1. 跨域的问题
+
+1. ### [跨域的问题](./PART2/cross-origin.md) 
+
 1. ### Less
     - [LESS](./PART2/Less/LESS.md)
 
@@ -75,6 +77,7 @@
 1. ### Vue
     - [Vue-cli](./PART3/Vue/vue-cli.md)
     - [Vuex](./PART3/Vue/Vuex.md)
+    - [Vue的双向数据绑定](./PART3/Vue/Vue原理/vue-concept.md)
 
 1. ### webpack
     - [webpack基础](./PART3/webpack/webpack.md)
