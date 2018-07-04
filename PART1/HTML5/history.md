@@ -20,3 +20,5 @@ window.onpopstate是popstate事件在window对象上的事件处理程序.
 <span style="color:red">调用history.pushState()或者history.replaceState()不会触发popstate事件. popstate事件只会在浏览器某些行为下触发</span>, 比如点击后退、前进按钮(或者在JavaScript中调用history.back()、history.forward()、history.go()方法).
 
 当网页加载时,各浏览器对popstate事件是否触发有不同的表现,Chrome 和 Safari会触发popstate事件, 而Firefox不会.
+
+[refrence](https://stackoverflow.com/questions/14824766/history-pushstate-not-working)
