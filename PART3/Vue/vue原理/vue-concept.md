@@ -4,8 +4,8 @@
 
 > 发布者-订阅者模式 （backbone.js）
 > 脏值检查 （angular.js）
-> 数据劫持 （vue.js）
+> 数据劫持 （vue.js） 
 
-## 
+## 数据劫持
 
 
