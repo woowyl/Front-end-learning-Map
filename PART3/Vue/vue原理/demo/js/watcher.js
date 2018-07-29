@@ -26,8 +26,9 @@ Watcher.prototype = {
         }
     },
     addDep: function(dep) {
+        console.log('watch.js addDep function param', dep);
         if (!this.depIds.hasOwnProperty(dep.id)) {
-            dep.addDep(this);
+            dep.addSub(this);
             this.depIds[dep.id] = dep;
         }
     },

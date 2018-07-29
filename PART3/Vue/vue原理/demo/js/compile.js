@@ -4,6 +4,7 @@ function Compile(el, vm) {
     this.$el = this.isElementNode(el) ? el : document.querySelector(el);
 
     if (this.$el) {
+        // 转为fragment对象  减少appenChild操作 
         this.$fragment = this.node2Fragment(this.$el);
         this.init();
         this.$el.appendChild(this.$fragment);
@@ -42,7 +43,7 @@ Compile.prototype = {
             }
 
             //遍历编译子节点
-            if (node.childNodes && node.firstChild.length) {
+            if (node.childNodes && node.childNodes.length) {
                 me.compileElement(node);
             }
         })
@@ -82,11 +83,11 @@ Compile.prototype = {
         return dir.indexOf('on') === 0;
     },
 
-    isElementNode: function() {
+    isElementNode: function(node) {
         return node.nodeType == 1;
     },
 
-    isTextNode: function() {
+    isTextNode: function(node) {
         return node.nodeType == 3;
     }
 };
@@ -113,7 +114,7 @@ var compileUtil = {
                 return;
             }
 
-            me.setVMVal(vm, exp, newValue);
+            me._setVMVal(vm, exp, newValue);
             val = newValue;
         });
     },
@@ -126,7 +127,7 @@ var compileUtil = {
         var updaterFn = updater[dir + 'Updater'];
 
         updaterFn && updaterFn(node, this._getVMVal(vm, exp));
-
+        console.log('watch');
         new Watcher(vm, exp, function(value, oldValue) {
             updaterFn && updaterFn(node, value, oldValue);
         })
