@@ -55,12 +55,25 @@ function observe(value, vm) {
 
 var uid = 0;
 
+// 这里是发布者
 function Dep() {
     this.id = uid++;
     this.subs = [];
 }
-
+/**
+ * 发布者中常出现的几个方法
+ * addSub() ：添加订阅者
+ * removeSub() : 删除订阅者
+ * notify(): 遍历订阅者列表，并触发订阅者的 某个方法（update()）
+ * 
+ * depend 向订阅者的发布者列表里添加自己。
+ */
 Dep.prototype = {
+    // 这里并没有做重复判断，那么会不会有重复的订阅者
+    // 并不会！！
+    // 因为这个订阅动作 是订阅者发起的（订阅者在调用发布者的方法）
+    // 在订阅者（这个demo里的watcher.js）的addDep()方法里
+    // 注意！！！为了使发布者里的订阅者列表和订阅者的发布者列表统一，不要直接调用发布者的addSub()方法
     addSub: function(sub) {
         this.subs.push(sub);
     },

@@ -30,7 +30,10 @@ Compile.prototype = {
     compileElement: function(el) {
         var childNodes = el.childNodes,
              me =this;
-
+        /**
+         * [].slice.call(arrays)  arrays.slice的区别？？
+         * 
+         */
         [].slice.call(childNodes).forEach(function(node) {
             var text = node.textContent;
             var reg = /\{\{(.*)\}\}/;    //表达式文本？？
@@ -57,6 +60,8 @@ Compile.prototype = {
                 var attrName = attr.name;
                 if (me.isDirective(attrName)) {
                     var exp = attr.value;
+                    console.log('exp',exp);
+                    
                     var dir = attrName.substring(2);
                     //事件指令
                     if (me.isEventDirective(dir)) {
@@ -127,7 +132,6 @@ var compileUtil = {
         var updaterFn = updater[dir + 'Updater'];
 
         updaterFn && updaterFn(node, this._getVMVal(vm, exp));
-        console.log('watch');
         new Watcher(vm, exp, function(value, oldValue) {
             updaterFn && updaterFn(node, value, oldValue);
         })
@@ -155,6 +159,8 @@ var compileUtil = {
     _setVMVal: function(vm, exp, value) {
         var val = vm;
         exp = exp.split(':');
+        console.log('set VMVal exp===',exp);
+        
         exp.forEach(function(k, i) {
             //非最后一个key，更新val的值
             if (i < exp.length - 1) {

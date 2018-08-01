@@ -27,8 +27,11 @@ Watcher.prototype = {
     },
     addDep: function(dep) {
         console.log('watch.js addDep function param', dep);
+        // 判断我是否已经订阅了此 发布者，如果没有订阅则继续订阅
         if (!this.depIds.hasOwnProperty(dep.id)) {
+            // 在发布者的订阅者列表中加入这个订阅者
             dep.addSub(this);
+            // 一个订阅者可以订阅多个发布者，将发布者放入到订阅者的dipIds中
             this.depIds[dep.id] = dep;
         }
     },
