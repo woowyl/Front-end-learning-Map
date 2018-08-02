@@ -36,6 +36,7 @@ Compile.prototype = {
          */
         [].slice.call(childNodes).forEach(function(node) {
             var text = node.textContent;
+            // 判断双大括号的表达式
             var reg = /\{\{(.*)\}\}/;    //表达式文本？？
             // 按元素节点方式编译
 
@@ -60,7 +61,7 @@ Compile.prototype = {
                 var attrName = attr.name;
                 if (me.isDirective(attrName)) {
                     var exp = attr.value;
-                    console.log('exp',exp);
+                    console.log('compile 文件 在逐个编译每一个表达式：这次是exp==',exp);
                     
                     var dir = attrName.substring(2);
                     //事件指令
@@ -114,6 +115,8 @@ var compileUtil = {
             val = this._getVMVal(vm, exp);
         
         node.addEventListener('input', function(e) {
+            console.log('add event listener function');
+            
             var newValue = e.target.value;
             if (val === newValue) {
                 return;
@@ -127,7 +130,7 @@ var compileUtil = {
     class: function(node, vm, exp) {
         this.bind(node, vm, exp, 'class');
     },
-
+    // 在这里绑定订阅者 页面的每次引用都是一次订阅
     bind: function(node, vm, exp, dir) {
         var updaterFn = updater[dir + 'Updater'];
 
@@ -151,6 +154,7 @@ var compileUtil = {
         var val = vm;
         exp = exp.split(':');
         exp.forEach(function(k) {
+            // 这个赋值语句会触发 vm的get事件
             val = val[k];
         });
         return val;
@@ -159,8 +163,6 @@ var compileUtil = {
     _setVMVal: function(vm, exp, value) {
         var val = vm;
         exp = exp.split(':');
-        console.log(exp,'exppppp');
-        console.log(vm,'vmmmmm');
         
         exp.forEach(function(k, i) {
             //非最后一个key，更新val的值

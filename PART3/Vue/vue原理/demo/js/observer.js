@@ -31,9 +31,12 @@ Observe.prototype = {
             enumerable: true,
             configurable: false,
             get: function() {
+                console.log('DEP.target======',Dep.target,'\n','val======',val,'\n','deeep=========', dep);
+                
                 if (Dep.target) {
                     dep.depend();
                 }
+                console.log('\n','---------------------','\n\n');
                 return val;
             },
             // !!!!!!!!!!!!!第二个关键 第一个关键是addEventListener

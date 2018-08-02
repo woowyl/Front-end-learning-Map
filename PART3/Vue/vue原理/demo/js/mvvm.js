@@ -11,8 +11,9 @@ function MVVM(options) {
     });
     // 监听computed: {}里的变化
     this._initComputed();
+    // 负责为每个data的属性建立一个发布者 dep
     observe(data, this);
-
+    // 这个编译过程将
     this.$compile = new Compile(options.el || document.body, this);
 }
 
@@ -22,6 +23,7 @@ MVVM.prototype = {
         new Watcher(this, key, cb);
     },
 
+    // 将vm._data.xxx => vm.xxx
     _proxyData: function(key, setter, getter) {
         var me = this;
         setter = setter || 
