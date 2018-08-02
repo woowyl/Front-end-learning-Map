@@ -1,9 +1,13 @@
-// Observe 对象
+// Observe 对象 发布者对象
 function Observe(data) {
+    // 这里的data 就是Vue的data对象,用于订阅
+    /**
+     * {
+     *      key: 'value'
+     * }
+     */
     this.data = data;
-    console.log(data,'data');
     this.walk(data);
-    console.log(this,'observe');
 }
 
 
@@ -20,18 +24,19 @@ Observe.prototype = {
     defineReactive: function(data, key, val) {
         var dep = new Dep();
         var childObj = observe(val);
-    
+        console.log('deeep', dep);
+        
         // 通过defineProperty监听属性的变化
         Object.defineProperty(data, key, {
             enumerable: true,
             configurable: false,
             get: function() {
                 if (Dep.target) {
-                    console.log('observe.js Dep.target is true');
                     dep.depend();
                 }
                 return val;
             },
+            // !!!!!!!!!!!!!第二个关键 第一个关键是addEventListener
             set: function(newVal) {
                 if (val === newVal) return;
                 val = newVal;
@@ -78,7 +83,6 @@ Dep.prototype = {
         this.subs.push(sub);
     },
     depend: function() {
-        console.log(Dep.target,'observe.js dep target');
         Dep.target.addDep(this);
     },
     removeSub: function(sub) {

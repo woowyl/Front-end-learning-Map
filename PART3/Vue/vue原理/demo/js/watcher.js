@@ -2,6 +2,7 @@ function Watcher(vm, expOrFn, cb) {
     this.cb = cb;
     this.vm = vm;
     this.expOrFn = expOrFn;
+    // 为什么要有这个属性，是否和Dep里的subs[]冗余？
     this.depIds = {};
 
     if (typeof expOrFn === 'function') {
@@ -22,11 +23,12 @@ Watcher.prototype = {
         var oldVal = this.value;
         if (value !== oldVal) {
             this.value = value;
-            this.cb.call(this.vm, value, oldVal);
+            console.log(this.cb);
+            
+            // this.cb.call(this.vm, value, oldVal);
         }
     },
     addDep: function(dep) {
-        console.log('watch.js addDep function param', dep);
         // 判断我是否已经订阅了此 发布者，如果没有订阅则继续订阅
         if (!this.depIds.hasOwnProperty(dep.id)) {
             // 在发布者的订阅者列表中加入这个订阅者

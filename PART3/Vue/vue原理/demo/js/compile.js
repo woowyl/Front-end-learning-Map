@@ -159,7 +159,8 @@ var compileUtil = {
     _setVMVal: function(vm, exp, value) {
         var val = vm;
         exp = exp.split(':');
-        console.log('set VMVal exp===',exp);
+        console.log(exp,'exppppp');
+        console.log(vm,'vmmmmm');
         
         exp.forEach(function(k, i) {
             //非最后一个key，更新val的值

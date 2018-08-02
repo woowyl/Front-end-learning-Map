@@ -9,7 +9,7 @@ function MVVM(options) {
     Object.keys(data).forEach(function(key) {
         me._proxyData(key);
     });
-
+    // 监听computed: {}里的变化
     this._initComputed();
     observe(data, this);
 

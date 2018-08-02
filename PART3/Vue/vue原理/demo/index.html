@@ -9,7 +9,9 @@
 <body>
     <div id="mvvm-app">
         <input type="text" v-model="word">
+        <input type="text" v-model="word22">
         <p>{{word}}</p>
+        <!-- <p>{{word22}}</p> -->
         <button  v-on:click="sayhi"> change model</button>
     </div>
 </body>
@@ -23,7 +25,9 @@
     var vm = new MVVM({
         el: '#mvvm-app',
         data: {
-            word: 'Hello World!'
+            word: 'Hello World!',
+            word22: "hello shanghai",
+            word3:"word3"
         },
         methods: {
             sayhi: function() {
@@ -31,4 +35,5 @@
             }
         }
     })
+    
 </script>
