@@ -13,9 +13,9 @@
  
 ### 2.2 两者指向
 - \_\_proto__ 指向 XXXX.prototype.
-    - `xxxx.\_\_proto__ `指向指向起对应XXXX的prototype，即，`xxxx.\_\_proto__` == `XXXX.prototype`
-    - `XXXX.prototype.\_\_proto__` 指向 `Object.prototype`, `Object.prototype.\_\_proto__`指向null
-    - `XXXX.\_\_proto__`指向最基层的 `Funciton.prototype`
+    - `xxxx.__proto__ `指向指向起对应XXXX的prototype，即，`xxxx.__proto__` == `XXXX.prototype`
+    - `XXXX.prototype.__proto__` 指向 `Object.prototype`, `Object.prototype.__proto__`指向null
+    - `XXXX.__proto__`指向最基层的 `Funciton.prototype`
 
 - prototype就是一个对象
     - 对象没有prototype只有类才有
