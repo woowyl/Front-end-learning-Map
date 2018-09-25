@@ -11,7 +11,7 @@
 - Object Function Foo这些都是XXXX,
 - 其中`function Function()` 和 `function Object()`由底层代码定义。`function Foo()`代表由用户定义的类。
  
-### 2.2 关于个
+### 2.2 两者指向
 - \_\_proto__ 指向 XXXX.prototype.
     - `xxxx.\_\_proto__ `指向指向起对应XXXX的prototype，即，`xxxx.\_\_proto__` == `XXXX.prototype`
     - `XXXX.prototype.\_\_proto__` 指向 `Object.prototype`, `Object.prototype.\_\_proto__`指向null
@@ -23,6 +23,7 @@
     - 包含一个constractor 指向其对应的类
 
     ![](./images/prototype.png)
+### 2.3
 ## 三、 为什么
 ### 3.1 构造函数的缺点
 定义在构造函数里的属性和方法，再每次定义对象时会重复定义，造成内存浪费。而定义在原型上的属性和方法可以复用，且修改后统一修改。

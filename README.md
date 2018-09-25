@@ -22,12 +22,13 @@
 
 1. ### HTML5
     - [H5新特性](./PART1/HTML5/HTML5新特性.md)
-    - canvas
+    - [history](./PART1/HTML5/history.md)
 
 1. ### JS
     - [垃圾回收机制](./PART1/JS基础/垃圾回收机制.md)
     - [基础类型](./PART1/JS基础/基础类型.md)
     - [冒泡还是捕获](./PART1/JS基础/冒泡还是捕获.md)
+    - [this](./PART1/JS基础/this.md)
 1. ### DOM
 
 1. ### 自适应
@@ -41,6 +42,8 @@
     - [正则表达式](./PART2/JS进阶/正则表达式.md)
     - 闭包
     - [source-map](./PART2/JS进阶/source-map.md)
+    - [prototype的理解](./PART2/JS进阶/prototype.md)
+    - [页面滚动](./PART2/JS进阶/scroll.md)
 1. ### ES6 
     - [箭头函数](./PART2/ES6/arrow-fun.md)
     - [babel](./PART2/ES6/babel.md)
@@ -61,6 +64,10 @@
 
 1. ### AJAX NPM
 1. ### NodeJS
+    - [install](./PART2/NPM&nodeJs/install.md)
+    - [packagejson](./PART2/NPM&nodeJs/packagejson.md)
+    - [命令](./PART2/NPM&nodeJs/命令.md)
+    - [版本](./PART2/NPM&nodeJs/版本.md)
 1. ### Express
 
 1. ### Mongodb
@@ -77,6 +84,7 @@
 1. ### Vue
     - [Vue-cli](./PART3/Vue/vue-cli.md)
     - [Vuex](./PART3/Vue/Vuex.md)
+    - [理解原理前的准备](./PART3/Vue/定义组件中的几个问题.md)
     - [Vue的双向数据绑定](./PART3/Vue/Vue原理/vue-concept.md)
 
 1. ### webpack
@@ -109,6 +117,7 @@
     - MACOS
 
 2. ### 数据结构 & 算法
+    - [快速排序](./PART4/算法/快速排序.md)
 
 1. ### 架构 & 设计模式
 
