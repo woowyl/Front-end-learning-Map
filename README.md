@@ -84,7 +84,7 @@
 1. ### Vue
     - [Vue-cli](./PART3/Vue/vue-cli.md)
     - [Vuex](./PART3/Vue/Vuex.md)
-    - [理解原理前的准备](./PART3/Vue/vue原理中的几个api.md)
+    - [理解原理前的准备](./PART3/Vue/vue原理/vue原理中的几个api.md)
     - [Vue的双向数据绑定](./PART3/Vue/vue原理/vue-concept.md)
 
 1. ### webpack
