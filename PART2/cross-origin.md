@@ -6,7 +6,7 @@
 #
 ## 一、什么是跨域
 
-之所以有跨域是因为浏览器的同源策略。想要知道什么是跨域，就要先知道什么是浏览器的同源策略
+之所以有跨域是因为*浏览器*的同源策略。想要知道什么是跨域，就要先知道什么是浏览器的同源策略,跨域问题只会出现在浏览器里。
 #### 1.1 同源策略定义
 > 同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。
  -百度百科
@@ -88,10 +88,36 @@ Set-Cookie: key=value; domain=.example.com; path=/
 - CORS
 
 ##### 3.3.1 Jsonp
+利用了`script`标签src,link标签href可以跨域的原理
 
 ##### 3.3.2  WebSocket
 
 ##### 3.3.3 CORS
+在要访问的服务器端添加允许跨域访问Http 头
+```javascript
+    response.writeHead(200, {
+        "Access-Control-Allow-Origin": '*'
+    });
+```
+##### 3.3.3.1 CORS预请求
+设置了`Access-Control-Allow-Origin`头只会是否所有的请求都可跨域访问？  
+答案是否定的，直接允许访问的条件有：
+- 允许的方法：GET、HEAD、POST
+- 允许的Content-Type: text/plain、multipart/form-data、application/x-www-form-urlencoded
+- [请求头限制](https://fetch.spec.whatwg.org/#cors-safelisted-request-header)
+- XMLHttpRequestUpload对象均没有注册任何事件监听器
+- 请求中没有使用ReadableStream对象
+
+如不满足上述条件，需要进行预请求：
+通过向Head里添加各个参数  
+```javascript
+    response.writeHead( 200, {
+        "Access-Control-Allow-Origin": '*',
+        "Access-Control-Allow-Header": 'X-Test-Cors',
+        "Access-Control-Allow-Methods": 'POST, PUT, DELETE'
+        "Access-Control-Max-Age": '1000'  //预访问命中后 下次间隔允许时间
+    });
+```
 
 
 Reference:
