@@ -61,27 +61,29 @@ function quickSort(array) {
     sort(0, array.length);
     return array;
  }
-
  function quickSort2(array) {
-    function sort(prev, end) {        
+     var inedex = 0;
+    function sort(prev, end) { 
+        console.log(inedex++);
+               
         if (prev > end) return;
         var mark = array[prev];
         var i = prev;
         var j = end
         while (i < j) {
             // 从小到大排序 这里要求把大的留在右边
-            while (i < j && array[j] > mark) {
+            while (i < j && array[j] >= mark) {
                 j--;
             }
             array[i] = array[j];
             // array[j] = mark;
-            while (i < j && array[i] < mark) {
+            while (i < j && array[i] <= mark) {
                 i++;
             }
             array[j] = array[i];
         }
         array[i] = mark;
-
+        
         sort(0,i-1);
         sort(j+1,end);
     }

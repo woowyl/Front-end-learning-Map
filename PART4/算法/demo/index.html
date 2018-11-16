@@ -7,16 +7,40 @@
     <title>Document</title>
     <script src="./sort/pop.js"></script>
     <script src="./sort/quick.js"></script>
+    <style>
+        .wrapper {
+            margin: 100px 50px;
+            background-color: antiquewhite;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="wrapper"> 
+        <div class="sort-div">
+            <ul id="pop-sort">
+                <li class="begin-array"></li>
+            </ul>
+        </div>
+    </div>
 </body>
 <script type="text/javascript">
-    var array = [4,1,6,2,7,10,3,8,9,5];
-    var sortingarray = array;
-    console.log('排序前数组',array);
-    var sortedArray = quickSort2(sortingarray);
-    console.log('排序后数组', sortedArray);
+    var array = [4,1,6,2,7,11,10,3,8,9,5];
+    // 初始化数据
+    var sortingarray = [...array];
+    var sortedArray = quickSort(sortingarray);
+    console.log('排序后序列: '+sortedArray);
     
+    function init() {
+        initBeginDOM(array, '.begin-array');
+    }
+    function initBeginDOM(array,queryText) {
+        var beginDOM = document.querySelectorAll(queryText);
+        
+        beginDOM.forEach(function(value,key) {
+            value.innerHTML = array.toString();
+        });
+    }
+
+    init();
 </script>
 </html>
