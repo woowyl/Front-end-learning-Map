@@ -52,7 +52,7 @@ function quickSort(array) {
                     }
                 }
             }
-            console.log(sortTimes++);
+            console.log('quickSort'+sortTimes++);
             array[nonius] = flag;
             sort(0, nonius);
             sort(nonius + 1, numsize);
@@ -62,30 +62,34 @@ function quickSort(array) {
     return array;
  }
  function quickSort2(array) {
-     var inedex = 0;
+     var index = 0;
     function sort(prev, end) { 
-        console.log(inedex++);
                
-        if (prev > end) return;
-        var mark = array[prev];
-        var i = prev;
-        var j = end
-        while (i < j) {
-            // 从小到大排序 这里要求把大的留在右边
-            while (i < j && array[j] >= mark) {
-                j--;
+        var flag = array[prev];
+        var fontCoord= prev;
+        var backCoord= end
+        if (prev < end-1) {
+
+            console.log('quickSort2', index++);
+            while (fontCoord < backCoord) {
+                // 从小到大排序 这里要求把大的留在右边
+                while (fontCoord < backCoord && array[backCoord] > flag) {
+                    backCoord--;
+                }
+                array[fontCoord] = array[backCoord];
+                // array[j] = mark;
+                while (fontCoord < backCoord && array[fontCoord] < flag) {
+                    fontCoord++;
+                }
+                array[backCoord] = array[fontCoord];
             }
-            array[i] = array[j];
-            // array[j] = mark;
-            while (i < j && array[i] <= mark) {
-                i++;
-            }
-            array[j] = array[i];
+            array[fontCoord] = flag;
+            console.log(fontCoord);
+            
+            sort(0,fontCoord);
+            sort(fontCoord+1,end);
+                    
         }
-        array[i] = mark;
-        
-        sort(0,i-1);
-        sort(j+1,end);
     }
     sort(0, array.length-1)
     return array;

@@ -19,17 +19,19 @@
         <div class="sort-div">
             <ul id="pop-sort">
                 <li class="begin-array"></li>
+                <li class="soted-array"></li>
             </ul>
         </div>
     </div>
 </body>
 <script type="text/javascript">
-    var array = [4,1,6,2,7,11,10,3,8,9,5];
+    var array = [4,1,6,32,2,7,10,12,3,8,9,5];
     // 初始化数据
     var sortingarray = [...array];
-    var sortedArray = quickSort(sortingarray);
-    console.log('排序后序列: '+sortedArray);
+    var sortedArray = quickSort2(sortingarray);
     
+    document.querySelector(".soted-array").innerHTML= sortedArray.toString();
+
     function init() {
         initBeginDOM(array, '.begin-array');
     }
