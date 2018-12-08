@@ -11,6 +11,22 @@
 #### nodeJS 到 Deno
 JS功能
 
+Node 之父 Ryan Dahl 发布新的开源项目 deno，从官方介绍来看，可以认为它是下一代 Node，使用 Go 语言代替 C++ 重新编写跨平台底层内核驱动，上层仍然使用 V8 引擎，最终提供一个安全的 TypeScript 运行时。
+deno 和 Node 的区别是什么？
+ry 开玩笑称，目前两者最大的区别是 Node 大行其道，而 Deno 尚未投入使用。
+
+从更高层面上来说，Deno 尽可能简化 V8 与系统 API 的耦合，并打造更加简单、稳定的模块系统，以及一个安全的沙箱运行环境。
+
+再者，使用 Golang 而不是 C++ 作为底层语言，这样，添加高级功能时会比在 Node 中更加容易，比如在 Go 中添加 http2.0支持，只需添加一些路由 API 和一些配置到 protobuf 中。
+
+Deno 诞生的目的，是为了创建更简单和安全的非浏览器 runtime，它在这个时候出现，是因为现在的开发工具比 2009 年更好。
+
+我们还可以认为 Deno 将是目前 Node 生态一些难解问题的终极答案，比如依赖管理、安全性、稳定性、横向扩展等等。
+
+Deno 的诞生，将启发更多人投入到下一代 Node 的探索当中，这比之前 Node 的一些分叉更具备创新和革命性。
+目前 Deno 正在紧张开发当中，我们也将持续关注它的进展。
+Deno Github 地址：[https://github.com/ry/deno](https://github.com/ry/deno)
+
 #### ELECTRONJS
 如果你说JS只能完成，浏览器的非空判断，那么你要重新认识一下JS了。
 ELECTRONJS 是一款使用 JavaScript, HTML 和 CSS 构建跨平台桌面应用的工具。使用它开发的软件有那些呢？
