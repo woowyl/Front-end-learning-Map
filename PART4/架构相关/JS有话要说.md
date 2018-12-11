@@ -44,7 +44,7 @@
     - Angular  
     - React
 
-可以说是现在最流行的三大JS框架，和之前的MVC框架不同的是他们在实现数据和dom的分离和添加前端路由的基础上，加入了状态管理模式(Vue-Vuex、Angular-ngrx、React-Redux),这让开发者在数据处理上更加清晰。
+    可以说是现在最流行的三大JS框架，和之前的MVC框架不同的是他们在实现数据和dom的分离和添加前端路由的基础上，加入了状态管理模式(Vue-Vuex、Angular-ngrx、React-Redux),这让开发者在数据处理上更加清晰。
 
 关于MVVM 和 MVC 在前端的实践过程，在这里不展开，想要具体了解的可以[戳这里](./mvvm&mvc.md);
 
