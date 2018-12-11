@@ -14,7 +14,7 @@
 
 ## 二、JS的发展
 
-从Web2.0，到后来的移动互联网时代，用户的交互需求不断提高，JS被要求完成的工作也逐步增多。每一次网络的变革都对前端开发和JS的发展有很大的影响。
+从Web2.0，到后来的移动互联网时代，用户的交互需求不断提高，JS被要求完成的工作也逐步增多。每一次网络的变革都对前端开发和JS的发展有很大的影响。
 
 从JS库的发展的角度具体来看：
 
@@ -111,7 +111,7 @@ JS的线程会执行代码段1，耗时1s,然后到setTimeout函数，这个函�
 
 <Br>
 <br>
-<img width="300px" src="./images/js/setTimeout_console.png">
+<img width="500px" src="./images/js/setTimeout_console.png">
 
 最后以Node.js的原理示意图为例来说明： 
 <br>
