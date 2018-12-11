@@ -21,17 +21,21 @@
 ### 2.1 Prototype.js,jQuery 到 Backbone.js，ember.js 再到 MV* 
 - API丰富和兼容
 由于早期浏览器的混战和标准的不统一，代码兼容是前端工程师工作中非常重要的一部分。除此之外，原生JS提供的document API十分有限，对原生进行封装，提供给开发者更友好易用的API是一个重要的需求。JS库很好地解决了这两个问题。代表库有：
+
     - [Prototype.js](https://github.com/prototypejs/prototype)  
     prototype.js是对原生对象的功能增强，多是扩充原生对象。
+    
     - [jQuery](https://github.com/jquery/jquery)  
     jquery.js是对原生语句的封装，多是构建自己的对象。可以说是使用最广的JS库，整个生态非常的完善，时至今日仍然有不可替代的作用。
 
 随着AJAX的发展和前端交互的日趋复杂，数据和DOM之间频繁的操作，成为影响开发者开发效率的因素。前端开发需要一种新的数据绑定方式来提升开发效率，MVC的思想开始进入前端开发。
 
-- MVC 的探索
+- MVC 的探索  
 将后端的MVC思想带入前端是JS框架的一个重要升级，完成了从JS库到框架的提升。这里列举两个有代表性的项目。
+
   - [Backbone.js](https://github.com/jashkenas/backbone)  
     Backbone.js由Jeremy Ashkenas开发，最初于2010年10月13日发布。是一个开源的、轻量级的MVC框架。发展的非常迅速，很快就成长为一种替代笨重的、全功能MVC架构（比如ExtJS）的JavaScript框架。BackboneJS库依赖于Underscore.js库。
+    
   - [Ember.js](https://github.com/emberjs/ember.js)  
     Ember.js的原始名称是SproutCore MVC框架。它由Yehuda Katz开发，最初于2011年12月发布。Ember.js允许开发者创建可扩展的单页Web应用。它提供了一套丰富的Handlebars.js库，功能包括：提供了对象模型、声明式的两路数据绑定、可计算的属性、自动化更新的模板，还提供了一个路由器来管理应用程序的状态。
 
@@ -53,11 +57,6 @@
 总结一下 Node.js  = 运行环境(负责将JS代码解释为电脑所能理解的机器语言) + JavaScript库。
 
 Node.js本身也在不断进化，Node 之父 Ryan Dahl 发布新的开源项目 deno，从官方介绍来看，可以认为它是下一代 Node，使用 Go 语言代替 C++ 重新编写跨平台底层内核驱动，上层仍然使用 V8 引擎，最终提供一个安全的 TypeScript 运行时。
-deno 和 Node 的区别是什么？  
-ry 开玩笑称，目前两者最大的区别是 Node 大行其道，而 Deno 尚未投入使用。  
-从更高层面上来说，Deno 尽可能简化 V8 与系统 API 的耦合，并打造更加简单、稳定的模块系统，以及一个安全的沙箱运行环境。
-我们还可以认为 Deno 将是目前 Node 生态一些难解问题的“终极”答案，比如依赖管理、安全性、稳定性、横向扩展等等。  
-Deno 的诞生，将启发更多人投入到下一代 Node 的探索当中，这比之前 Node 的一些分叉更具备创新和革命性。  
 
 Deno Github 地址：[https://github.com/ry/deno](https://github.com/ry/deno)
 
