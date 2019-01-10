@@ -10,6 +10,7 @@
     - 浮动
     - 定位
     - line-height & overflow
+    - [skeleton-screen,骨架图](./PART1/布局入门/skeleton-screen-loading的实现.md)
 
 1. ### 背景边框
     - [雪碧图](./PART1/background-border/sprite.md)
@@ -29,6 +30,7 @@
     - [基础类型](./PART1/JS基础/基础类型.md)
     - [冒泡还是捕获](./PART1/JS基础/冒泡还是捕获.md)
     - [this](./PART1/JS基础/this.md)
+    - [call&apply](./PART1/JS基础/call&apply.md)
 1. ### DOM
 
 1. ### 自适应
@@ -37,7 +39,6 @@
 ## PART2
 
 1. ### JS进阶 (知识 标准)
-    - this call apply
     - [正则表达式](./PART2/JS进阶/正则表达式.md)
     - 闭包
     - [source-map](./PART2/JS进阶/source-map.md)
@@ -50,10 +51,14 @@
     - [promise](./PART2/ES6/promise.md)
     - [module](./PART2/ES6/module1-import-export.md)
 
-1. ### 事件 移动端
+1. ### 模块化
+    - [模块化](./PART2/JS进阶/模块化/模块化.md)
+    - [CommonJS](./PART2/JS进阶/模块化/CommonJS.md)
 
-1. ### [HTTP 与 HTTPS](./PART2/http&https.md)
-
+1. ###  http
+    - [HTTP 与 HTTPS](./PART2/HTTP/http&https.md)
+    - [HTTP](./PART2/HTTP/http.md)
+    - [非对称加密](./PART2/HTTP/https.md)
 1. ### [跨域的问题](./PART2/cross-origin.md) 
 
 1. ### Less
@@ -118,9 +123,15 @@
 
 1. ### 架构 & 设计模式
     - [架构相关名词理解](./PART4/架构相关/架构相关名词.md)
+    - [JS有话说](./PART4/架构相关/JS有话说.md)
+    - [MV*](./PART4/架构相关/mvvm&mvc.md)
+    - [解释、编译、脚本](./PART4/架构相关/编译型语言_解释性语言_脚本语言.md)
 
 1. ### 关于winter老师分享的总结
     - [如何学习前端](./PART4/关于winter老师分享的总结/前端应该怎么学.md)
+
+2. ### 会议记录
+    - [2019-D2](./PART4/2019-D2.md)
 
 
 
