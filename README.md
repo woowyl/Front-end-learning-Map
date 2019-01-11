@@ -6,15 +6,11 @@
 ## PART1 (知识 标准)
 
 1. ### 布局入门
-    - 盒子模型 & BFC
-    - 浮动
-    - 定位
-    - line-height & overflow
     - [skeleton-screen,骨架图](./PART1/布局入门/skeleton-screen-loading的实现.md)
+    - [andorid单行垂直居中问题](./PART1/布局入门/andorid单行垂直居中问题.md)
 
 1. ### 背景边框
     - [雪碧图](./PART1/background-border/sprite.md)
-    - 居中：垂直居中，水平居中
     - [background-size](./PART1/background-border/background)
 
 1. ### CSS3入门
@@ -31,6 +27,7 @@
     - [冒泡还是捕获](./PART1/JS基础/冒泡还是捕获.md)
     - [this](./PART1/JS基础/this.md)
     - [call&apply](./PART1/JS基础/call&apply.md)
+    - [arguments&argument.callee](./PART1/JS基础/arguments.md)
 1. ### DOM
 
 1. ### 自适应
@@ -109,7 +106,7 @@
 1. ### Python 爬虫实战
 
 1. ### weex
-
+#
 
 ## PART4 
 
