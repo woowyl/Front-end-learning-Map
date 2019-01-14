@@ -11,7 +11,7 @@
 
 >fun.call(thisArg, arg1, arg2, ...)
 
-##### thisArg   
+##### thisArg
 fun体内this所指向的对象,在严格模式下需单独讨论
 
 ##### arg1, arg2  
