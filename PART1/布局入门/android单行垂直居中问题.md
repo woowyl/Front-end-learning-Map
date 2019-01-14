@@ -51,5 +51,12 @@
     align-self: auto | flex-start | flex-end | center | baseline | stretch;
 ```
 
-### 3 在android的问题
+### 3 但在android上依然有问题
+flex 的出现解决了一部分问题，但是由于android手机上仍然会有偏上的情况。产生的原因：  
 
+1. 字体小于12px后，浏览器解析异常的问题， 多发生在使用`rem`单位中。
+#### 方案：
+我们可以通过 transform: scale 来处理，比如，字体大小是 8px，我们把字体设定为 16px，然后通过 scale(0.5) 缩放至一倍大小，简单粗暴。
+
+2. 字体原因，通过css基本无解
+因为文字在content-area内部渲染的时候已经偏移了，而css的居中方案都是控制的整个content-area的居中
