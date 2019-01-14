@@ -7,7 +7,7 @@
 
 1. ### 布局入门
     - [skeleton-screen,骨架图](./PART1/布局入门/skeleton-screen-loading的实现.md)
-    - [andorid单行垂直居中问题](./PART1/布局入门/andorid单行垂直居中问题.md)
+    - [andorid单行垂直居中问题](./PART1/布局入门/android单行垂直居中问题.md)
 
 1. ### 背景边框
     - [雪碧图](./PART1/background-border/sprite.md)
