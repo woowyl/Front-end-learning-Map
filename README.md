@@ -41,6 +41,7 @@
     - [source-map](./PART2/JS进阶/source-map.md)
     - [prototype的理解](./PART2/JS进阶/prototype.md)
     - [页面滚动](./PART2/JS进阶/scroll.md)
+    - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
 1. ### ES6 
     - [箭头函数](./PART2/ES6/arrow-fun.md)
     - [babel](./PART2/ES6/babel.md)

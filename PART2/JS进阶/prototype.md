@@ -17,7 +17,7 @@
     - `XXXX.prototype.__proto__` 指向 `Object.prototype`, `Object.prototype.__proto__`指向null
     - `XXXX.__proto__`指向最基层的 `Funciton.prototype`
 
-- prototype就是一个对象  
+- prototype就是一个对象
     - 对象没有prototype只有类才有
     - 对象的\_\_proto__指向对应类的protoype
     - 包含一个constractor 指向其对应的类
