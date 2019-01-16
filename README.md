@@ -13,13 +13,14 @@
     - [雪碧图](./PART1/background-border/sprite.md)
     - [background-size](./PART1/background-border/background)
 
-1. ### CSS3入门
-    - CSS3 属性
-    - CSS3 动画
+1. ### CSS3
+    - [CSS3 属性](./PART1/CSS3/property.md)
+    - [CSS3 动画](./PART1/CSS3/animate.md)
 
 1. ### HTML5
     - [H5新特性](./PART1/HTML5/HTML5新特性.md)
     - [history](./PART1/HTML5/history.md)
+    - [canvas](./PART1/HTML5/canvas.md)
 
 1. ### JS
     - [垃圾回收机制](./PART1/JS基础/垃圾回收机制.md)
@@ -28,16 +29,22 @@
     - [this](./PART1/JS基础/this.md)
     - [call&apply](./PART1/JS基础/call&apply.md)
     - [arguments&argument.callee](./PART1/JS基础/arguments.md)
-1. ### DOM
+
+1. ### 宿主API
+    - [DOM](./PART1/Host-API/DOM.md)
+    - [BOM](./PART1/Host-API/BOM.md)
+    - [CSSOM](./PART1/Host-API/CSSOM.md)
 
 1. ### 自适应
-# 
+    - [flex](./responsive/flex.md)
 
+#
 ## PART2
 
 1. ### JS进阶 (知识 标准)
     - [正则表达式](./PART2/JS进阶/正则表达式.md)
-    - 闭包
+    - [闭包](./PART2/JS进阶/闭包.md)
+    - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
     - [source-map](./PART2/JS进阶/source-map.md)
     - [prototype的理解](./PART2/JS进阶/prototype.md)
     - [页面滚动](./PART2/JS进阶/scroll.md)
@@ -53,25 +60,26 @@
     - [模块化](./PART2/JS进阶/模块化/模块化.md)
     - [CommonJS](./PART2/JS进阶/模块化/CommonJS.md)
 
-1. ###  http
+1. ###  网络相关
     - [HTTP 与 HTTPS](./PART2/HTTP/http&https.md)
     - [HTTP](./PART2/HTTP/http.md)
     - [非对称加密](./PART2/HTTP/https.md)
-1. ### [跨域的问题](./PART2/cross-origin.md) 
+    - [websocket](./PART2/network/websocket.md)
+    - [跨域的问题](./PART2/network/cross-origin.md) 
 
-1. ### Less
-    - [LESS](./PART2/Less/LESS.md)
+1. ### CSS预编译
+    - [LESS](./PART2/CSS-precompile/LESS.md)
+    - [SASS](./PART2/CSS-precompile/SASS.md)
+    - [stylus](./PART2/CSS-precompile/stylus.md)
 
 1. ### AJAX
-
+    - [promise](./PART2/ES6/promise.md)
 
 1. ### Mongodb
 
-1. ### websocket
-
 1. ### Linux、Python
-# 
 
+#
 ## PART3 (知识 技术)
 
 1. ### NodeJS
@@ -80,7 +88,7 @@
     - [命令](./PART3/NPM&nodeJs/命令.md)
     - [版本](./PART3/NPM&nodeJs/版本.md)
     - Express
-        - [Express简介]
+        - [Express简介](./PART3/NPM&nodeJs/express/about.md)
 
 1. ### React
 
@@ -102,15 +110,14 @@
     - [异步加载](./PART3/webpack/webpack-vue-lazyload.md)
     - [webpack 坑](./PART3/webpack/webpack指北.md)
 1. ### ESLint
-1. ### Mocha
 
-1. ### Angular
+1. ### Mocha
 
 1. ### Python 爬虫实战
 
 1. ### weex
-#
 
+#
 ## PART4 
 
 1. ### 工具类
