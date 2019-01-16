@@ -1,4 +1,4 @@
-##HTTP & HTTPS
+## HTTP & HTTPS
 
 > HTTPS = HTTP + SSL
 

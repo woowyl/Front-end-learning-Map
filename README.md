@@ -6,12 +6,11 @@
 ## PART1 (知识 标准)
 
 1. ### 布局入门
-    - [skeleton-screen,骨架图](./PART1/布局入门/skeleton-screen-loading的实现.md)
+    - [skeleton-screen,骨架图](./PART1/布局入门/skeleton-screen-loading.md)
     - [andorid单行垂直居中问题](./PART1/布局入门/android单行垂直居中问题.md)
-
 1. ### 背景边框
     - [雪碧图](./PART1/background-border/sprite.md)
-    - [background-size](./PART1/background-border/background)
+    - [background-size](./PART1/background-border/background.md)
 
 1. ### CSS3
     - [CSS3 属性](./PART1/CSS3/property.md)
@@ -36,7 +35,7 @@
     - [CSSOM](./PART1/Host-API/CSSOM.md)
 
 1. ### 自适应
-    - [flex](./responsive/flex.md)
+    - [flex](./PART1/responsive/flex.md)
 
 #
 ## PART2
