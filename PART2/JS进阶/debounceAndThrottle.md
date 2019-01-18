@@ -23,8 +23,23 @@
 
 #### 防抖
 ``` javascript
-    function debounce(func) {
-        
+    function debounce(func, await) {
+        var timeout, timeout2;
+
+        return function() {
+            if (!timeout) { //之前没有绑定事件
+                timeout = setTimeout(() => {
+                    func() 
+                    timeout = 0;
+                }, wait);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func() 
+                    timeout = 0;
+                }, wait);
+            }
+        }
     }
 ```
 
@@ -32,8 +47,16 @@
 #### 节流
 
 ```javascript
-    function throttle() {
-
+    function throttle(func, await) {
+        var timeout = 0,result;
+        return function() {
+            if (!timeout) {
+                timeout = setTimeout(() => {
+                   func() 
+                   timeout = 0;
+                }, wait);
+            }
+        };
     }
 ```
 
