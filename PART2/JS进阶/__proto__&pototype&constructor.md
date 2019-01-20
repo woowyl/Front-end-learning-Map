@@ -312,7 +312,7 @@ Foo也可以被写为：
 3. 构造函数对象才有prototype属性，指向其原型对象：
    - 构造函数对象.prototype.constructor == 自己
    - 不是构造函数的对象，没有prototype属性
-   - 小对象不是构造函数
+   - 小对象不是构造函数，不能new出新对象 eg： foo obj Math
 4. 大对象.`__proto__` === Function.prototype
 5. Function.`__proto__` === Function.prototype === Function的原型对象 (!!!比较特殊)
 
