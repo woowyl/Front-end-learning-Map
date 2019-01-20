@@ -46,6 +46,7 @@
     - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
     - [source-map](./PART2/JS进阶/source-map.md)
     - [prototype的理解](./PART2/JS进阶/prototype.md)
+    - [再说prototype与__proto__](./PART2/JS进阶/__proto__&pototype&constructor.md.md)
     - [页面滚动](./PART2/JS进阶/scroll.md)
     - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
     - [关于作用域的思考](./PART2/JS进阶/aboutScope.md)
