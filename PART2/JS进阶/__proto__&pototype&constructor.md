@@ -22,8 +22,9 @@ JS里没有类的概念，全部都是对象，但是通过new 的方式我们�
 JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象均有此属性（真的吗？？？！！！）。
 
 ### 1.2 小对象的`__proto__`
-我们先来看看小对象下的`__proto__`：
-<img style="display:block; margin:10px;" src="./images/prototype/foo_proto_.jpg" width="400px">
+我们先来看看小对象下的`__proto__`：  
+<img style="display:block; margin:10px;" src="./images/prototype/foo_proto_.jpg" width="400px">  
+
 它指向一个对象——有连个属性组成:constructor和又一个`__proto__`(考虑到一切对象皆有`__proto`,这里也就不足为奇)。
 ```javascript
     {
