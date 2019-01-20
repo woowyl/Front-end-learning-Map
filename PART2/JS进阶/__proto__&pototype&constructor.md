@@ -9,7 +9,7 @@ JS里没有类的概念，全部都是对象，但是通过new 的方式我们�
     var foo = new Foo('wyl', 28);
 
 ```
-为了区分这两者的不同，方便后续描述方便，我们把`Foo`这样的定义称为`大对象`，`foo`这样的定义称为`小对象`.
+为了区分这两者的不同，方便后续描述方便，我们把`Foo`这样的定义称为**大对象**，`foo`这样的定义称为**小对象**.
 
 从这个例子我们就可以看出，foo和Foo直接有着非常密切的联系，那这种联系在编程中如何体现呢？这里就要提到他们的中间桥梁，一个对象，在开始介绍它之前，我们给它取名字叫`原型对象`。
 
@@ -23,7 +23,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
 
 ### 1.2 小对象的`__proto__`
 我们先来看看小对象下的`__proto__`：
-![](./images/prototype/foo_proto_.jpg)  
+<img style="display:block; margin:10px;" src="./images/prototype/foo_proto_.jpg" width="400px">
 它指向一个对象——有连个属性组成:constructor和又一个`__proto__`(考虑到一切对象皆有`__proto`,这里也就不足为奇)。
 ```javascript
     {
@@ -64,8 +64,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
         set: f{}
     }
 ```
-![](./images/prototype/foo_proto_toggle.png)  
-
+<img style="display:block; margin:10px;" src="./images/prototype/foo_proto_toggle.png" width="500px">
 到这里我们发现，这个对象怎么没有`__proto__`呢？说好的所有对象都有`__proto__`，这是什么原因呢，我们这里不做展开，在后面会解释这个问题，先要明白三点：
 1. 小对象.`__proto__`  = 原型对象
 2. 原型对象.`__proto__` = 一个确定的对象(没有`__proto__`)。
@@ -77,8 +76,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
 ### 1.3 大对象的`__proto__`
 还是之前的代码，在控制台输入 
 > `Foo.__proto__`  
-
-![](./images/prototype/Foo_proto_.png)  
+<img style="display:block; margin:10px;" src="./images/prototype/Foo_proto_.png" width="400px">
 
 看到返回的是一个字符串`ƒ () { [native code] }`，不是我们想象中的对象。这就是JS帮我们封装好的代码，也就是说底层语言留给我们的接口。  
 那native code 是什么东西呢，我们放后面讲，现在需要明白第四点
@@ -89,7 +87,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
 ## 2. prototype
 
 之前我们讲了`__proto__`，这个prototype又是什么鬼？先来看一张图
-![](./images/prototype/prototype.png) 
+<img style="display:block; margin:10px;" src="./images/prototype/prototype.png" width="400px">
 分别输入:  
 
 - >foo.prototype
@@ -99,8 +97,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
 从输出的结果来看，小对象没有prototype,大对象的prototype和小对象的`__proto__`指向同一个对象，没错就是我们开始讲到的原型对象！！ 它们之间的联系终于建立起来了，为了验证这个关系，向控制台输入
 > foo.`__proto__` === Foo.prototype
 结果是什么呢？  
-
-![](./images/prototype/__proto__eqPrototype.png) 
+<img style="display:block; margin:10px;" src="./images/prototype/__proto__eqPrototype.png" width="400px">
 
 <p style="color:red">true!!</p>,实锤无误了。  
 样我们得到了小对象、大对象、原型对象之间的关系。我们再之前的结论里添加第五条：  
@@ -125,8 +122,7 @@ JS提供了一个叫做`__proto`的属性，它简直太常见了。任何对象
 ## constructor
 constructor顾名思义：构造函数。那我们来仔细看看这个constructor有些什么：
 
-![](./images/prototype/constructor.png)   
-
+<img style="display:block; margin:10px;" src="./images/prototype/constructor.png" width="400px">
 红色框内是constructor的内容，大体属性是下面几个：
 ```javascript
     constructor: {
@@ -144,7 +140,9 @@ constructor顾名思义：构造函数。那我们来仔细看看这个construct
 这个constructor是何方神圣呢？是谁的构造函数呢，从它的name属性来看，它应该就是Foo()函数，为了验证这个猜想，在控制台输入：
 > foo.`__proto__`.constructor === Foo;
 
-![](./images/prototype/constructorEqFoo.png)   
+
+<img style="display:block; margin:10px;" src="./images/prototype/constructorEqFoo.png" width="400px">
+
 得到的结果印证了我们的猜想，我们再来看上上图绿色的部分，这恰好和我们之前prototype联系起来。
 
 > \>`foo.__proto__.constructor` === Foo;
@@ -197,7 +195,8 @@ obj1和obj2这种方式是等效的，{}是new的快捷写法，也可以说是�
  因为`function Object() {}`这个对象时JS Core帮我们写好的，和我们自己定义的相比，里面定义了好多方法。
 
 仔细观察这个`obj.__proto__`（红色框内容），这个原型对象没有`__proto__`,再仔细对比，这和我们之前发现的没有`__proto__`那个对象一模一样。
-![](./images/prototype/foo_proto_toggle.png)  
+
+<img style="display:block; margin:10px;" src="./images/prototype/foo_proto_toggle.png" width="400px">  
 
 也就是说，之前我们一直提到的那个没有`__proto__`的对象就是JS原生定义好的Object的原型对象,而且这个对象是唯一的，所有的原型对象的`__proto__`，都指向它。
 为了验证我们的猜想，我们再建立一个对象。
