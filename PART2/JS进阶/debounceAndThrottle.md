@@ -27,15 +27,15 @@
         var timeout, timeout2;
 
         return function() {
-            if (!timeout) { //之前没有绑定事件
+            if (!timeout) {    //之前没有绑定事件
                 timeout = setTimeout(() => {
-                    func() 
+                    func();
                     timeout = 0;
                 }, wait);
             } else {
                 clearTimeout(timeout);
                 timeout = setTimeout(() => {
-                    func() 
+                    func();
                     timeout = 0;
                 }, wait);
             }
