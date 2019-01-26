@@ -32,6 +32,8 @@
     ![](./image/log_squence.png)
 
     会在master上多加一个提交，但是如果是没有冲突的情况下，这次提交就会被消除掉。
+
+> 综上，只有在使用了fast-forward模式且在没有冲突的情况下，master会少一个合并的记录，其他情况下都会保留
 ### 远程相关
 - ### git clone
 - ### git push origin [branchname]

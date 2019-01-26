@@ -124,7 +124,7 @@
 
 1. ### 工具类
     - [markdown](./PART4/工具类/markdown教程.md)
-    - git
+    - [git](./PART4/工具类/git.md)
     - MACOS
 
 2. ### 数据结构 & 算法
