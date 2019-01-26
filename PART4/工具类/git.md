@@ -1,26 +1,23 @@
-## git
+# GIT 笔记
 
-## 1. 已掌握的
+## 一. 已掌握的
 
 ### 1.1 日常操作
 
-- ### git status
-
-- ### git diff
-
-- ### git add 
-
-- ### git pull
-
-- ### git push
-
-### 撤销相关
+``` java
+    > git status
+    > git diff 
+    > git add 
+    > git pull
+    > git push
+```
+### 1.2 撤销回退相关
 
 - ### git checkout
 - ### git reset
 - ### git revert
 
-### 分支和合并相关
+### 1.3 分支和合并相关
 - ### git merge
     - fast-forward: 默认是fast-forward, 在没有冲突的前提下，被合并分支的提交会直接并入合并分支，在log里无法跟随到。
 
@@ -34,22 +31,36 @@
     会在master上多加一个提交，但是如果是没有冲突的情况下，这次提交就会被消除掉。
 
 > 综上，只有在使用了fast-forward模式且在没有冲突的情况下，master会少一个合并的记录，其他情况下都会保留
-### 远程相关
-- ### git clone
-- ### git push origin [branchname]
+### 1.4 远程相关
+- ### 获取远程分支上的代码 
+    `git clone @git//`
+    命令执行之后，默认只会将master分支拉取到本地，如果想要仍想获取远程上的某个分支可以这么做
+    ```
+        > git checkout origin/远程分支名
+        > git chekcout 远程分支名
 
-### 其他
+        或者你不想每次都checkout 两次你可以使用
+        > git pull --all    //一次将所有origin 分支放入stash状态
+        > git chekcout 远程分支名1
+        > git chekcout 远程分支名2
+
+    ```
+- ### 将本地分支推送到远程 
+    `git push origin [branchname]`  
+    此命令是将远程服务器上没有的分支推送上去，如果远程分支已经存在此分支，也就是名字相同，则会推送失败，你需要先将远程分支
+
+### 1.5 其他
 
 - ### git stash
 
 
 
-### 2. 未掌握的
+## 二、 未掌握的
 
 - ### git rebase
 
 
-### 3. 理解git 需要掌握的几个概念
+## 三、理解git 需要掌握的几个概念
 
 - ### 3.1 集中式和分布式
 
