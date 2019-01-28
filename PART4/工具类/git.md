@@ -19,7 +19,7 @@
     - 已add  使用: `$ git checkout [version] -- filename`   
      version填你想要恢复至的版本号，如果想从最新的版本恢复可直接使用HEAD  ` $ git checkout Head -- filename`
 - ### `$ git reset`
-    如果代码已被commit至本地仓库，但是还没有push到远程仓库，那么就可以通过reset来撤销本地提交。
+    如果代码已被commit至本地仓库，但是还没提交到远程，而且你不想让远程看到哪些没有用的提交，那么就可以通过reset来撤销本地提交，HEAD指针将直接倒退到你所想回退的版本，在git log里指针之前的提交将看不到，也不会被提交到远程。
     git reset命令是**将本地仓库的HEAD指针指向对象的版本**，并通过参数去控制是否用重新定位版本的代码对工作区和暂存区进行修改。
     - `$ git reset --sort <版本号>`   
         表示只对本地仓库进行修改。
@@ -27,10 +27,12 @@
         表示将本地仓库HEAD指向对应版本号 + 将两次切换的差异放入缓存区
     - `$ git reset --hard <版本号>`
         表示将本地仓库HEAD指向对应版本号 + 并将工作区的代码修改为对应版本
-- ### `$ git revert`
+- ### `$ git revert`  
+    如果你的代码已经被push盗远程，这时候回退就需要使用revert,和reset不同的是，它不会舍弃任何log记录，而是会**添加**一个新的commit 去记录这次舍弃的操作。
 
-关于撤销的总结: <span style="color:red">可能造成对工作区的直接修改是不安全的！！</span>
 
+关于撤销的总结: <span style="color:red">可能造成对工作区的直接修改是不安全的！！</span>  
+下面的速查表列出了命令对树的影响。 “HEAD” 一列中的 “REF” 表示该命令移动了 HEAD 指向的分支引用，而`‘HEAD’' 则表示只移动了 HEAD 自身。 特别注意 WD Safe? 一列 - 如果它标记为 NO，那么运行该命令之前请考虑一下。
 ||HEAD|Index|Workdir|WD Safe?|
 |-|-|-|-|-|
 |Commit Level|||||
@@ -73,7 +75,7 @@
 
     命令执行之后，默认只会将master分支拉取到本地，如果想要仍想获取远程上的某个分支可以这么做
     ```
-        $ git checkout origin/远程分支名
+        $ git checkout <origin>/远程分支名
         $ git chekcout 远程分支名
 
         或者你不想每次都checkout 两次你可以使用
@@ -94,18 +96,21 @@
 ### 1.5 其他
 
 - ### git stash
+    经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作，或者想要获取一下远程最新的代码。问题是，你不想提交进行了一半的工作，但不提交的话以后你无法回到这个工作点。解决这个问题的办法就是`git stash`命令。
+    - git stash : 保存 
+    - git stash list : 查看已保存的列表
+    - git stash apply <stash@{index}> :应用保存，但是不删除
+    - git stash drop <stash@{index}>  :删除对应保存
+    - (git stash pop <stash@{index}> (= apply + drop))  :应用+删除保存
+
+
 - ### git fetch
 - ### git rebase
 
 
-## 二、 未掌握的
+## 二、理解git 需要掌握的几个概念
 
-- ### git rebase
-
-
-## 三、理解git 需要掌握的几个概念
-
-- ### 3.1 集中式和分布式
+- ### 2.1 集中式和分布式
 
     先说集中式版本控制系统，版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。
 
@@ -123,24 +128,25 @@
 
 #### 常见的SVN路径
 ```
-        > svn checkout [path] (server address)            //获取服务器上项目
-        > svn add [file]                                  //要添加的文件
-        > svn update -r [version] [certain paht or file]  //提交前更新 可简化为 svn up
-        > svn commit -m “LogMessage“ [-N] [--no-unlock] PATH //提交 可简化为svn ci
+        $ svn checkout [path] (server address)            //获取服务器上项目
+        $ svn add [file]                                  //要添加的文件
+        $ svn update -r [version] [certain paht or file]  //提交前更新 可简化为 svn up
+        $ svn commit -m “LogMessage“ [-N] [--no-unlock] PATH //提交 可简化为svn ci
 ``` 
 #### 常见的Git路径
+
 ```
-        > git clone [path] (server address)            //获取服务器上项目
-        > git status                                   //获取服务器上项目
-        > git add [file]                               //要添加的文件
-        > svn commit -m “LogMessage“                   //提交至本地repository
-        > git pull                                     //获取远程Repository更新
-        > git push                                     //将更新推送至远程Repository
+        $ git clone [path] (server address)            //获取服务器上项目
+        $ git status                                   //获取服务器上项目
+        $ git add [file]                               //要添加的文件
+        $ git commit -m “LogMessage“                   //提交至本地repository
+        $ git pull                                     //获取远程Repository更新
+        $ git push                                     //将更新推送至远程Repository
 ``` 
  注意区分两者在commit前（svn:update）后(git:pull)的操作，这是两者集中和分布差异的体现。
 
 
-- ### 3.2 工作区和暂存区
+- ### 2.2 工作区和暂存区
     一张图理解清晰明了
     ![](./image/git.jpg)
 
@@ -154,30 +160,36 @@
     |HEAD|上一次提交的快照，下一次提交的父结点|
     |Index|预期的下一次提交的快照|
     |Working Directory| 沙盒(当前工作目录)|
+
+
     HEAD INDEX 以一种高效但并不直观的方式，将它们的内容存储在 .git 文件夹中。 工作目录会将它们解包为实际的文件以便编辑。 你可以把工作目录当做 沙盒。在你将修改提交到暂存区并记录到历史之前，可以随意更改。
 
 
-- ### 3.3 HEAD
+- ### 2.3 HEAD
     HEAD 是当前分支引用的指针，它总是指向该分支上的最后一次提交。 这表示 HEAD 将是下一次提交的父结点。 通常，理解 HEAD 的最简方式，就是将它看做 你的上一次提交 的快照。
 
-    其实，查看快照的样子很容易。 下例就显示了 HEAD 快照实际的目录列表，以及其中每个文件的 SHA-1 校验和：
-    ``` java
-        $ git cat-file -p HEAD
-        tree cfda3bf379e4f8dba8717dee55aab78aef7f4daf
-        author Scott Chacon  1301511835 -0700
-        committer Scott Chacon  1301511835 -0700
-
-        initial commit
-
-        $ git ls-tree -r HEAD
-        100644 blob a906cb2a4a904a152...   README
-        100644 blob 8f94139338f9404f2...   Rakefile
-        040000 tree 99f1a6d12cb4b6f19...   lib
+    HEAD 是一个指针，指向某一个分支，通常你可以把 HEAD 當做「目前所在分支」看待。在 .git 目錄裡有一個檔名為 HEAD 的檔案，就是記錄著 HEAD 的內容，來看一下這東西長什麼樣子：
     ```
-    cat-file 与 ls-tree 是底层命令，它们一般用于底层工作，在日常工作中并不使用。不过它们能帮助我们了解到底发生了什么。
+    $ cat .git/HEAD
+      ref: refs/heads/master
+    ```
+    從這個檔案看起來，HEAD 目前正指向著 master 分支。如果有興趣再深入看一下 refs/heads/master 的內容就會發現，其實所謂的 Master 分支也不過就是一個 40的字符串，这正是master上的一次 commit id：
+    ```
+    $ cat .git/refs/heads/master
+      df0fa5e4292ef32a653c13e29d9ea3e510d1eb16
+    ```
+    所以HEAD就是某个分支上的某次提交。  
+    `git chekcout commit_id`,会直接修改.git/HEAD里的内容，直接改为某次提交。  
+    `git reset commit_id`不会修改.git/HEAD里的内容，只修改了 .git/refs/heads/\<branch\>的内容。
 
-- ### 3.4 origin
+
+- ### 2.4 origin
+    origin只是约定俗成，最常用的一个远程的名字，并不是必须的。正如我们前面所讲，git是分布式的，所以它的远程仓库可以有多个。但为了让多人开发能够保持统一，我们一般选定一个中央服务器，当做枢纽这个枢纽的名字就可以叫做`origin`。你可以通过：
+        `$ git remote add <远程分支名> <仓库地址>`
+    去给仓库添加一个关联的远程，
 
 ## reference
  - [廖雪峰git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
  - [Git-工具-重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86)
+ - [What's the difference between Git Revert, Checkout and Reset?
+](https://stackoverflow.com/questions/8358035/whats-the-difference-between-git-revert-checkout-and-reset)
