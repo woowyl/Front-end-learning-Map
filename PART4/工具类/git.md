@@ -116,6 +116,32 @@
     #### 什么时候用fetch??  
     z
 - ### git rebase
+    首先要知道我们为什么要使用rebase才能知道在什么时候使用rebase。
+    > 我们使用rebase可以使提交的历史记录显得更简洁。
+      不要在远程分支上做rebase操作，因为rebase会改写历史。因此你应该只使用 rebase 来清理你的本地工作，千万不要尝试着对那些已经被发布的提交进行这个操作。
+
+    综上，为了安全起见，不要对远程分支（或者说是）做rebase操作，那么rebase的使用场景就放在了，本地开发分支上。
+
+    使用rebase可以让合并操作少一次合并的提交，并且在log --graph上保持单线上前。  
+    使用`$ git merge `的情况  
+    <img width="450px" src="./image/rebase_merge_m.png">
+
+    使用`$ git rebase `  
+    <img width="450px" src="./image/rebase_merge_r.png">
+
+
+    rebase操作：
+    ``` javascript
+        // 在experiment分支上 
+        $ git checkout experiment
+        $ git rebase master
+
+        // 切换到mater分支上
+        $ git checkout master
+        $ git merge experiment
+    ```
+
+
 
 
 ## 二、理解git 需要掌握的几个概念
