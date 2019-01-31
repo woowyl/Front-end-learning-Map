@@ -105,6 +105,16 @@
 
 
 - ### git fetch
+    fetch 是和 pull类似的，我再平时使用的时候基本都用了pull,这两者的区别可以用两张图直观的反应。  
+    ![](./image/fetch_pull.png)  
+    ![](./image/fetch_merge.png)  
+    fetch：只会把修改更新到本地的版本库repository;    
+    pull: 把修改更新到本地，而且同时修改工作区，workspace.
+
+    fetch到本地版本库的代码，需要使用merge来将修改合并到工作区。  
+    `git pull = git fetch + git merge.`。  
+    #### 什么时候用fetch??  
+    z
 - ### git rebase
 
 
