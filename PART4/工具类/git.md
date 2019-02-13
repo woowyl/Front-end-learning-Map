@@ -31,12 +31,12 @@
     如果你的代码已经被push盗远程，这时候回退就需要使用revert,和reset不同的是，它不会舍弃任何log记录，而是会**添加**一个新的commit 去记录这次舍弃的操作。
 
 
-关于撤销的总结: <span style="color:red">可能造成对工作区的直接修改是不安全的！！</span>  
+关于撤销的总结: <label style="color:red">可能造成对工作区的直接修改是不安全的！！</label>  
 下面的速查表列出了命令对树的影响。 “HEAD” 一列中的 “REF” 表示该命令移动了 HEAD 指向的分支引用，而“HEAD” 则表示只移动了 HEAD 自身。 特别注意 WD Safe? 一列 - 如果它标记为 NO，那么运行该命令之前请考虑一下。  
 
-|HEAD|Index|Workdir|WD Safe?|
+|  |HEAD|Index|Workdir|WD Safe?|
 |-|-|-|-|-|
-|Commit Level|||||
+|Commit Level|  |  |  |  |
 |reset --soft [commit]|REF|NO|NO|YES
 |reset [commit]|REF|YES|NO|YES|
 |reset --hard [commit]|REF|YES|YES|**NO**|
