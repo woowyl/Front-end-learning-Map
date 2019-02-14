@@ -141,9 +141,7 @@
         $ git checkout master
         $ git merge experiment
     ```
-
-
-
+    另外一种情况是在开发的时候有好多多余的commit,那在push之前，我不希望把一些多余的commit也推送到仓库，那么我就可以使用rebase来[合并多个 Commit](https://www.jianshu.com/p/964de879904a)
 
 ## 二、理解git 需要掌握的几个概念
 
