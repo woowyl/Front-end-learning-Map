@@ -8,3 +8,8 @@ $ npm install -g @vue/cli
 $ vue --version
 
 ```
+## 插件
+插件是一个非常重要的概念，插件可以修改 webpack 的内部配置，也可以向 vue-cli-service 注入命令。在项目创建的过程中，绝大部分列出的特性都是通过插件来实现的。
+
+### vue.congig.js
+
