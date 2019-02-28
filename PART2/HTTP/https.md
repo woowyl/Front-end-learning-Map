@@ -60,5 +60,6 @@ OK 有了这个做铺垫，我们再来它如何作用域传输
 
 
 #### reference [密码学——公钥与私钥](https://www.cnblogs.com/darksir/p/3704198.html)
+#### [数字签名与数字证书技术简介](https://yq.aliyun.com/articles/54155?spm=a2c4e.11153940.blogcont54156.13.73db7060RtUfj4#3)
 
 
