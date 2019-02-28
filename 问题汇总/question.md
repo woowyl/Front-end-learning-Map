@@ -18,3 +18,8 @@
 
 1. Object.prototype.toString.call 判断数据类型，原因是typeof 在null上的遗留问题
 2. 在条件判断时，除了 undefined， null， false， NaN， ''， 0， -0，其他所有值都转为 true，包括所有对象。
+1. 单页和多页的优缺点
+
+
+## vue
+1. 父组件里如何知道子组件已经渲染完成
