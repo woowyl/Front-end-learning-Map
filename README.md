@@ -34,6 +34,7 @@
     - [this](./PART1/JS基础/this.md)
     - [call&apply](./PART1/JS基础/call&apply.md)
     - [arguments&argument.callee](./PART1/JS基础/arguments.md)
+    - [严格模式](./PART1/JS基础/严格模式.md)
 
 1. ### 宿主API
     - [DOM](./PART1/Host-API/DOM.md)
