@@ -68,7 +68,9 @@
 1. ### 模块化
     - [模块化](./PART2/JS进阶/模块化/模块化.md)
     - [CommonJS](./PART2/JS进阶/模块化/CommonJS.md)
-
+    - [模块化语法](./PART2/JS进阶/模块化/模块化语法.md)
+    - [如何实现模块化](./PART2/JS进阶/模块化/如何实现模块化.md)
+    
 1. ###  网络相关
     - [HTTP 与 HTTPS](./PART2/HTTP/http&https.md)
     - [HTTP](./PART2/HTTP/http.md)
