@@ -10,3 +10,4 @@ Counter.objCounter.num = 9;
 console.log('初始输出:',Counter.counter, Counter.objCounter.num);
 Counter.addCounter();
 console.log('初始输出:',Counter.counter, Counter.objCounter.num);
+Counter.counter = 14;
