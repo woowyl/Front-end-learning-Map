@@ -8,7 +8,15 @@ CommonJs是在服务器端运行，通过require()语法去加载相应的文件
 　　b. 不再继续执行。
 
 （2）如果 X 以 "./" 或者 "/" 或者 "../" 开头 
-　　a. 根据 X 所在的父模块，确定 X 的绝对路径。 
+　　a. 根据 X 所在的父模块，确定 X 的绝对路径。
+        以 在/home/wyl/project/foo.js内 执行require('bar') 为例，确定其路径需要依次搜索每一个目录：
+        
+        /home/wyl/project/node_modules/bar
+        /home/wyl/node_modules/bar
+        /home/node_modules/bar
+        /node_modules/bar
+
+
 　　b. 将 X 当成文件，依次查找下面文件，只要其中有一个存在，就返回该文件，不再继续执行。
         X  
         X.js
