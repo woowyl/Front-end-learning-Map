@@ -1,6 +1,6 @@
 ## HTTP & HTTPS
 
-> HTTPS = HTTP + SSL
+> HTTPS = HTTP + Security
 
 ### 一、HTTP
 1、HTTP遵循经典的 `客户端-服务端模型`
@@ -34,17 +34,17 @@
 缓存的种类有很多,其大致可归为两类：私有与共享缓存。共享缓存存储的响应能够被多个用户使用。私有缓存只能用于单独用户。本文将主要介绍浏览器与代理缓存，除此之外还有`网关缓存`、`CDN`、`反向代理缓存`和`负载均衡器`等部署在服务器上
 
 
-<img src="./images/http/HTTPCachtType.png" width="800px">
+<img src="../images/http/HTTPCachtType.png" width="800px">
 
 ### 3.2response 和 request头部信息  
 
-<img src="./images/http/http-request.png" width="700px">    <br>
+<img src="../images/http/http-request.png" width="700px">    <br>
 
-<img src="./images/http/http-reponse.png" width="700px">  
+<img src="../images/http/http-reponse.png" width="700px">  
 
 ### 3.3 关于缓存的详解
 
-### 3.3.1 常用的三个属性
+### 3.3.1 客户端（浏览器）常用的三个属性
 当三者同时出现按优先级从高到低
  Pragma -> Cache-Control -> Expires
  > Cache-Control from HTTP1.1  
@@ -61,10 +61,20 @@
 ### 3.3.1.2 Expires
 >取值样式为：`Expires: Fri, 11 Jun 2021 11:33:01 GMT`
 
-有了Pragma来禁用缓存，自然也需要有个东西来启用缓存和定义缓存时间，对http1.0而言，Expires就是做这件事的首部字段。 Expires的值对应一个GMT（格林尼治时间），比如`Mon, 22 Jul 2002 11:12:01 GMT`来告诉浏览器资源缓存过期时间，<span style="color;red">如果还没过该时间点则不发请求。</span>
+有了Pragma来禁用缓存，自然也需要有个东西来启用缓存和定义缓存时间，对http1.0而言，Expires就是做这件事的首部字段。 Expires的值对应一个GMT（格林尼治时间），比如`Mon, 22 Jul 2002 11:12:01 GMT`来告诉浏览器资源缓存过期时间，<span style="color:red">如果还没过该时间点则不发请求。</span>
 
 ### 3.3.1.3 Cache-Control
 > 取值样式为：`"Cache-Control" ":" cache-directive`
+
+
+这三个值都可以通过在服务器向客户端返回内容时做修改，比如在Nodejs中
+``` javascript
+    response.writeHead(200, {
+        'Content-Type': 'text/javascript',
+        'Cache-Control': 'max-age=20000, no-cache',
+        'Pragma': 'no-cache'
+    })
+```
 
 
 ### 3.3.2 缓存校验字段
@@ -95,8 +105,3 @@
 ```
 - 其他文件如js css就需要使用服务器设置文件控制header
 
-
-
-
-## 
-<img src="./network.gif" width="600px">
