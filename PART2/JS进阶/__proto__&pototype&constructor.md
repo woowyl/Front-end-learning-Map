@@ -383,9 +383,8 @@ Foo也可以被写为：
 - 改变构造函数？
 - 改变prototype
 
-### 5. 全局函数对象Date Array String Object、全局对象Math JSON、全局函数isNan() encodeURI()直接的关系和区别
+### 5. 全局函数对象Date Array String Object、全局对象Math JSON、全局函数isNaN() encodeURI()直接的关系和区别
 
 - Math 是一个 new Object() 只是名字是大写
 
 我们放在下一篇[原型对象](./原型对象.md)里讲
-
