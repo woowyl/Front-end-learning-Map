@@ -4,7 +4,7 @@
 
 ## call是什么
 
-> call() 方法`调用`一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
+> call() 方法`调用`一个函数, 其具有一个指定的this值和分别提供的参数(相对apply的数组)。
 
 - 通俗的说就是改变函数内this的指向，指向第一个参数。
 - 它是函数的一个方法，所以出现在它`.`前的一定是一个函数 `function`
@@ -82,7 +82,9 @@ greet.call(obj);  // cats typically sleep between 12 and 16 hours
 
 ## apply
 
+> apply的作用和call完全相同，唯一的不同是第二个参数，apply以数组的形式传递。
 
+下面我们一起来看一些apply的应用，在实际应用中理解他。
 
 ### 用 apply 将数组添加到另一个数组
 
