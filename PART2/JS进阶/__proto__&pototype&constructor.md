@@ -363,6 +363,7 @@ Foo也可以被写为：
 4. 大对象.`__proto__` === Function.prototype
 5. Function.`__proto__` === Function.prototype === Function的原型对象 (!!!比较特殊)
 6. 除Object的原型对象没有__proto__外，其他原型对象的__proto__都指向Object的原型对象，这个原型对象的内容由JS Core 提前定义。
+7. 每个构造函数都有一个原型对象（prototype），原型对象都包含一个指向构造函数的指针（constuctor）,而实例都包含一个指向原型对象的内部指针（`__proto__`）
 
 ## 五、下一篇
 
