@@ -241,6 +241,13 @@ html内实现：
    仍然加载,
 - Content-Security-Plicy: report-uri /report
 
+
+## HTTP2
+- 信道复用
+- 分帧传输
+   可以不关心帧到达的先后顺序，最后会重新组装
+- Server Push
+
  
 
 
