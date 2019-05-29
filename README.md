@@ -21,14 +21,15 @@
     - [雪碧图](./PART1/background-border/sprite.md)
     - [background-size](./PART1/background-border/background.md)
 
-1. ### CSS3
-    - [CSS3 属性](./PART1/CSS3/property.md)
-    - [CSS3 动画](./PART1/CSS3/animate.md)
+<!-- 1. ### CSS3 -->
+  <!-- - [CSS3 属性](./PART1/CSS3/property.md) -->
+  <!-- - [CSS3 动画](./PART1/CSS3/animate.md) -->
 
 1. ### HTML5
+
     - [H5新特性](./PART1/HTML5/HTML5新特性.md)
     - [history](./PART1/HTML5/history.md)
-    - [canvas](./PART1/HTML5/canvas.md)
+    <!-- - [canvas](./PART1/HTML5/canvas.md) -->
 
 1. ### JS
     - [垃圾回收机制](./PART1/JS基础/垃圾回收机制.md)
@@ -38,13 +39,13 @@
     - [arguments&argument.callee](./PART1/JS基础/arguments.md)
     - [严格模式](./PART1/JS基础/严格模式.md)
 
-1. ### 宿主API
+<!-- 1. ### 宿主API
     - [DOM](./PART1/Host-API/DOM.md)
     - [BOM](./PART1/Host-API/BOM.md)
-    - [CSSOM](./PART1/Host-API/CSSOM.md)
+    - [CSSOM](./PART1/Host-API/CSSOM.md) -->
 
-1. ### 自适应
-    - [flex](./PART1/responsive/flex.md)
+<!-- 1. ### 自适应
+    - [flex](./PART1/responsive/flex.md) -->
 
 #
 
@@ -52,25 +53,25 @@
 
 1. ### JS进阶 (知识 标准)
 
-    - [正则表达式](./PART2/JS进阶/正则表达式.md)
-    - [闭包](./PART2/JS进阶/闭包.md)
-    - [call&apply](./PART2/JS进阶/call&apply.md)
-    - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
-    - [source-map](./PART2/JS进阶/source-map.md)
     - [prototype的理解](./PART2/JS进阶/prototype.md)
     - [再说prototype与__proto__](./PART2/JS进阶/__proto__&pototype&constructor.md)
+    - [call&apply](./PART2/JS进阶/call&apply.md)
     - [JS 继承](./PART2/JS进阶/继承.md)
+    - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
     - [页面滚动](./PART2/JS进阶/scroll.md)
     - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
+    - [正则表达式](./PART2/JS进阶/regex.md)
+    <!-- - [闭包](./PART2/JS进阶/闭包.md) -->
     - [关于作用域的思考](./PART2/JS进阶/aboutScope.md)
-    - [AST语法树](./PART2/JS进阶/AST.md)
+    <!-- - [AST语法树](./PART2/JS进阶/AST.md) -->
+    - [source-map](./PART2/JS进阶/source-map.md)
 
-1. ### ES6 
+1. ### ES6
 
     - [箭头函数](./PART2/ES6/arrow-fun.md)
     - [babel](./PART2/ES6/babel.md)
     - [let/const](./PART2/ES6/let-const.md)
-    - [promise](./PART2/ES6/promise.md)
+    <!-- - [promise](./PART2/ES6/promise.md) -->
     - [module](./PART2/ES6/module1-import-export.md)
 
 1. ### 模块化
@@ -84,19 +85,15 @@
 
     - [HTTP 与 HTTPS](./PART2/HTTP/http&https.md)
     - [HTTP](./PART2/HTTP/http.md)
-    - [非对称加密](./PART2/HTTP/https.md)
-    - [websocket](./PART2/network/websocket.md)
+    - [非对称加密](./PART2/HTTP/公钥私钥.md)
+    <!-- - [websocket](./PART2/network/websocket.md) -->
     - [跨域的问题](./PART2/network/cross-origin.md) 
 
 1. ### CSS预编译
 
     - [LESS](./PART2/CSS-precompile/LESS.md)
-    - [SASS](./PART2/CSS-precompile/SASS.md)
-    - [stylus](./PART2/CSS-precompile/stylus.md)
-
-1. ### AJAX
-
-    - [promise](./PART2/ES6/promise.md)
+    <!-- - [SASS](./PART2/CSS-precompile/SASS.md) -->
+    <!-- - [stylus](./PART2/CSS-precompile/stylus.md) -->
 
 1. ### Mongodb
 
