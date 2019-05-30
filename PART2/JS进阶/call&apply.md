@@ -8,6 +8,7 @@
 
 - 通俗的说就是改变函数内this的指向，指向第一个参数。
 - 它是函数的一个方法，所以出现在它`.`前的一定是一个函数 `function`
+- 可理解为fn.call(thisArg, arg1, arg2, ...) 就是 fn(arg1, arg2, ....)在执行时，将fn里的this 替换为thisArg;
 
 语法：
 
@@ -41,7 +42,7 @@ fun 本身的的参数
 
 ```
 
-```
+```js
     food1.name = "apple";
     foo1.price = 100;
 ```
