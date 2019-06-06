@@ -61,8 +61,10 @@
     - [页面滚动](./PART2/JS进阶/scroll.md)
     - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
     - [正则表达式](./PART2/JS进阶/regex.md)
-    <!-- - [闭包](./PART2/JS进阶/闭包.md) -->
-    - [关于作用域的思考](./PART2/JS进阶/aboutScope.md)
+    - [执行上下文、作用域、作用域链？？](./PART2/JS进阶/执行上下文_作用域_作用域链.md)
+    - [抽象的执行上下文](./PART2/JS进阶/concept_of_execute.md)
+    - [闭包](./PART2/JS进阶/闭包.md)
+    <!-- - [关于作用域的思考](./PART2/JS进阶/aboutScope.md) -->
     <!-- - [AST语法树](./PART2/JS进阶/AST.md) -->
     - [source-map](./PART2/JS进阶/source-map.md)
 
