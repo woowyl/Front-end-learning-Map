@@ -370,7 +370,7 @@ Foo也可以被写为：
 通过尝试实验，搞清楚了原型对象、`__proto__`、`prototype`、`constructor`
 的关系，但是仍然有一些问题需要搞清楚。
 
-### 1. JS为什么要有原型对象这个东西
+### 1. Foo.methods = function() {} 和 Foo.prototype.methods = function() {}区别是什么
 
 ### 2. 不同的对象里默认的constructor的方法有什么异同，默认prototype有什么异同。
 

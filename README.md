@@ -57,19 +57,21 @@
     - [再说prototype与__proto__](./PART2/JS进阶/__proto__&pototype&constructor.md)
     - [call&apply](./PART2/JS进阶/call&apply.md)
     - [JS 继承](./PART2/JS进阶/继承.md)
+    - [让人忽略的arguments](./PART2/JS进阶/让人忽略的arguments.md)
     - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
-    - [页面滚动](./PART2/JS进阶/scroll.md)
-    - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
-    - [正则表达式](./PART2/JS进阶/regex.md)
     - [执行上下文、作用域、作用域链？？](./PART2/JS进阶/执行上下文_作用域_作用域链.md)
     - [抽象的执行上下文](./PART2/JS进阶/concept_of_execute.md)
     - [闭包](./PART2/JS进阶/闭包.md)
+    - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
+    - [正则表达式](./PART2/JS进阶/regex.md)
+    - [页面滚动](./PART2/JS进阶/scroll.md)
     <!-- - [关于作用域的思考](./PART2/JS进阶/aboutScope.md) -->
     <!-- - [AST语法树](./PART2/JS进阶/AST.md) -->
     - [source-map](./PART2/JS进阶/source-map.md)
 
 1. ### ES6
 
+    - [ES6 学习之路](./PART2/ES6/ES6知识点排序.md)
     - [箭头函数](./PART2/ES6/arrow-fun.md)
     - [babel](./PART2/ES6/babel.md)
     - [let/const](./PART2/ES6/let-const.md)
@@ -171,6 +173,9 @@
 2. ### 会议记录
     - [2019-D2](./PART4/2019-D2.md)
 
+3. ### 面试的一些问题
+    - [JS相关](./PART4/interviewing/js.md)
+    
 2. ### 补充知识
     - [命令行](./PART4/补充知识/命令行.md)
 
