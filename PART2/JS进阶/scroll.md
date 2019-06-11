@@ -1,4 +1,26 @@
-# Js中的滚动
+# Js中的位置滚动
+
+## 位置
+
+一个呈现给用户的界面，程序员能做的就是定位+交互。定位作为二分之一重要的部分，在开发中也经常用到，所以掌握以下概念对我们非常重要。
+
+- 相对位置
+  - offsetHeight
+  - offsetLeft
+  - offsetParent
+  - offsetWidth
+  - getBoundingClientRect()
+
+- 滚动位置
+  - scrollHeight
+  - scrollTop
+  - scrollWidth
+
+- 元素本身
+  - clientHeight
+  - clientLeft
+  - clientTop
+  - clientWidth
 
 [页面demo](http://www.wangyuanliang.com/programmer-demo/dist/part2/#/js/scroll)
 滚动:在容器中的内容超出时的表现形式。
