@@ -22,6 +22,17 @@
   - clientTop
   - clientWidth
 
+- window属性
+  - outerHeight
+  - outerWidth
+  - innerHeight
+  - innerWidth
+  - screen
+  - screenX
+  - screenY
+  - scrollX [pageXOffest]
+  - scrollY [pageYOffset]
+
 [页面demo](http://www.wangyuanliang.com/programmer-demo/dist/part2/#/js/scroll)
 滚动:在容器中的内容超出时的表现形式。
 
