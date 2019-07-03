@@ -95,7 +95,7 @@ arguments对象是所有（非箭头）函数中都可用的局部变量。你�
 
 ```js
     function args2Arr(args) {
-        var args1 = Object.prototype.call(arguments); //这个转化比较慢，在性能不好的代码中不推荐这种做法。
+        var args1 = Array.prototype.slice.call(arguments); //这个转化比较慢，在性能不好的代码中不推荐这种做法。
         
         var args2 = Array.from(arguments); //ES6语法
 

@@ -58,10 +58,11 @@
     - [call&apply](./PART2/JS进阶/call&apply.md)
     - [JS 继承](./PART2/JS进阶/继承.md)
     - [让人忽略的arguments](./PART2/JS进阶/让人忽略的arguments.md)
-    - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
     - [执行上下文、作用域、作用域链？？](./PART2/JS进阶/执行上下文_作用域_作用域链.md)
     - [抽象的执行上下文](./PART2/JS进阶/concept_of_execute.md)
     - [闭包](./PART2/JS进阶/闭包.md)
+    - [隐式转换—无时无刻的toString](./PART2/JS进阶/隐式转换.md)
+    - [bind与柯里化](./PART2/JS进阶/bind与柯里化.md)
     - [防抖和节流](./PART2/JS进阶/debounceAndThrottle.md)
     - [正则表达式](./PART2/JS进阶/regex.md)
     - [页面滚动](./PART2/JS进阶/scroll.md)
@@ -175,7 +176,7 @@
 
 3. ### 面试的一些问题
     - [JS相关](./PART4/interviewing/js.md)
-    
+
 2. ### 补充知识
     - [命令行](./PART4/补充知识/命令行.md)
 
