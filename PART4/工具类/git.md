@@ -5,6 +5,7 @@
 ### 1.1 日常操作
 
 ``` javascript
+
     $ git status            //查看当前目录下的文件状态，是否被修改，是否已被添加至缓存区
     $ git diff              //查看工作区文件与版本中文件的差异
     $ git add               //将修改从工作区添加至缓存区
@@ -87,6 +88,7 @@
     会在master上多加一个提交，但是如果是没有冲突的情况下，这次提交就会被消除掉。
 
     > 综上，只有在使用了fast-forward模式且在没有冲突的情况下，master会少一个合并的记录，其他情况下都会保留
+    如果想要保持work tree的整洁，可以使用`Git rebase`来让merge这条合并信息不显示在项目的wrok tree里。
 
 ### 1.4 远程相关
 
@@ -145,8 +147,6 @@
    一般的`git pull` 会自动完成合并，另加一条合并的commit log(格式相对固定)。如果使用 `git fetch`，这个log可以自己去控制并定义log格式.  
    如果只是当前环境下合并的话，直接`git fetch` + `git merge`（外部修改merge 本地）。效果等同于 `git stash` + `git pull` （本地merge 外部修改）。
 
-   
-
 - ### git rebase
 
     首先要知道我们为什么要使用rebase才能知道在什么时候使用rebase。
@@ -155,7 +155,7 @@
     综上，为了安全起见，不要对远程分支（或者说是）做rebase操作，那么rebase的使用场景就放在了，本地开发分支上。
 
     使用rebase可以让合并操作少一次合并的提交，并且在log --graph上保持单线上前。  
-    使用`$ git merge `的情况
+    使用`$ git merge`的情况
 
     <img width="450px" src="./image/rebase_merge_m.png">
 
