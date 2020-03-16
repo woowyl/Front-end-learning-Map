@@ -1,6 +1,6 @@
 # GIT 笔记
 
-## 一. 已掌握的
+## 一. 高频使用
 
 ### 1.1 日常操作
 
@@ -59,14 +59,16 @@
 |File Level|||||
 |reset (commit) [file]|NO|YES|NO|YES|
 |checkout (commit) [file]|NO|YES|YES|**NO**|
-从功能上看：
+
+从功能上看，针对单个文件的操作：
+
 ``` HTML
     $ git reset --hard [commit] file
-    
+
     等效于:
 
     $ git chekcout (commit) file
-    
+
     等效于:
 
     $ git reset (commit) file  + $ git chekcout -- file
@@ -107,6 +109,17 @@
 
     ```
 
+- ### 本地仓库和远程仓库关联
+
+    ```js
+        //首先进入本地仓库目录
+        $ cd  /local/gitdir
+        $ git init
+        $ git remote add origin git@github.XXXXX/XXXX  // origin 就是你本地的远程名，推荐origin但不强制
+        $ git add . & git commit -m 'init commit'
+        $ git push -u origin master //第一次需要加u再次提交可省略
+    ```
+
 - ### `$ git push --set-upstream origin [branchname]` 将本地分支推送到远程 
 
     此命令是将远程服务器上没有的分支推送上去，如果远程分支已经存在此分支，也就是名字相同，则会推送失败。添加`--set-upstream`是为了和远程分支建立关联，默认情况不加这个参数，虽然你向服务器推送了这个分支，但在执行 pull 和 push操作时会提示你没有关联远程分支。
@@ -129,7 +142,7 @@
     - git stash list : 查看已保存的列表
     - git stash apply <stash@{index}> :应用保存，但是不删除
     - git stash drop <stash@{index}>  :删除对应保存
-    - (git stash pop <stash@{index}> (= apply + drop))  :应用+删除保存
+    - git stash pop <stash@{index}> (= apply + drop)  :应用+删除保存
 
 - ### git fetch
 
@@ -152,7 +165,7 @@
     首先要知道我们为什么要使用rebase才能知道在什么时候使用rebase。
     > 我们使用rebase可以使提交的历史记录显得更简洁。不要在远程分支上做rebase操作，因为rebase会改写历史。因此你应该只使用 rebase 来清理你的本地工作，千万不要尝试着对那些已经被发布的提交进行这个操作。
 
-    综上，为了安全起见，不要对远程分支（或者说是）做rebase操作，那么rebase的使用场景就放在了，本地开发分支上。
+    综上，为了安全起见，不要对远程分支做rebase操作，那么rebase的使用场景就很明确了——本地开发分支上。
 
     使用rebase可以让合并操作少一次合并的提交，并且在log --graph上保持单线上前。  
     使用`$ git merge`的情况
