@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/html2canvas.js"></script>
+    <style>
+        body {
+            padding: 50px;
+        }
+        .wrapper {
+            position: relative;
+            display: inline-flex;
+        }
+        .wrapper h4 {
+            position: absolute;
+            top: 95px;
+            left: 20px;
+        }
+        .wrapper img {
+            width: 320px;
+        }
+        .render-img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="capture" >
+        <h4 style="color: #000; ">Hello fanli!</h4>
+        <img src="./images/pop.png" alt="">
+    </div>
+    <br>
+    <br>
+    <button onclick="initPng()" style="height: 30px; margin-top: 30px;">生成图片</button>
+    <button onclick="upload()" style="height: 30px; margin-top: 30px;">上传图片</button>
+    <p>生成后的图片:</p>
+    <img class="render-img" id="img" src="" class="image" />
+    <!-- <form style="display: none;" name="imgupload" enctype="multipart/form-data" action="http://fun.fanli.com/api/media/upload" method="POST">
+        <input type="file" multiple="multiple" name="mediafile[]"/>
+        <input type="text" name="owner" value="9k9"/>
+        <input type="text" name="need_audit" value="no"/>
+    </form> -->
+    <a href="" id="download">下载</a>
+</body>
+
+<script>
+    var dataURL;
+     html2canvas(document.querySelector("#capture")).then(canvas => {
+        dataURL = canvas.toDataURL("image/png");
+    });
+    function  initPng() {
+        document.querySelector("#img").setAttribute("src", dataURL);
+        document.querySelector("#download").setAttribute("href", dataURL);
+    }
+
+    function upload() {
+        document.getElementsByName("mediafile[]")[0].setAttribute("value", dataURL);
+        document.forms['imgupload'].submit();
+    }
+   
+</script>
+</html>
