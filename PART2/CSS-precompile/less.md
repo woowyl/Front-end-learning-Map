@@ -73,27 +73,27 @@
 
 - 在Node.js下使用
 
-```js
+  ```js
     npm i -g less
     > lessc styles.less styles.css
-```
+  ```
 
 - 在浏览器中直接使用
 
-``` html
+  ``` html
     <link rel="stylesheet/less" type="text/css" href="styles.less">
     <script src="less.js" type="text/javascript"></script>
-```
+  ```
 
 - 使用编译工具 webpack less-loader
 
-``` js
-npm i webpack less-loader --save-dev
-```
+  ``` js
+    npm i webpack less-loader --save-dev
+  ```
 
-webpack.conf.js中添加：
+  webpack.conf.js中添加：
 
-``` javascript
+  ``` javascript
     {
         test: /\.less$/,
         use: ExtractPlugin.extract({
@@ -105,7 +105,7 @@ webpack.conf.js中添加：
             ]
         })
     },
-```
+  ```
 
 ## 具体语法
 
