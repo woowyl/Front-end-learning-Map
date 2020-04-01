@@ -67,24 +67,26 @@ css是关键：
 
 ```js
 
-        // 当input focus时触发滚动监听
-        $JInput.on('focus', function() {
-            //键盘起来是滞后的 所以+ settimeout
-            setTimeout(function() {
-                keyboardScrollTop = $(window).scrollTop();
-                $(window).on("scroll.test", keyboardScrollTop);
-            }, 500);
-        })
-        // 当键盘收起后去除scroll 监听
-        .on('blur', function() {
-            $(window).off("scroll.test", keyboardScrollTop);
-        });
+    // 当input focus时触发滚动监听
+    $JInput.on('focus', function() {
+        //键盘起来是滞后的 所以+ settimeout
+        setTimeout(function() {
+            keyboardScrollTop = $(window).scrollTop();
+            $(window).on("scroll.test", keyboardScrollTop);
+        }, 500);
+    })
+    // 当键盘收起后去除scroll 监听
+    .on('blur', function() {
+        $(window).off("scroll.test", keyboardScrollTop);
+    });
 
     function keyboardScrollTop() {
          window.scrollTo(0, keyboardScrollTop);
     }
 
 ```
+
+这里需要注意的是，
 
 ## 通过节流防止页面抖动
 
@@ -94,6 +96,67 @@ css是关键：
 
         $(window).on("scroll.test", throttleScroll);
     })
+```
+
+这里需要注意的是，要区分以下两段代码的区别
+
+```js
+    function throttleScroll() {
+        throttle(200, function() {
+
+        });
+    }
+
+    var throttleScroll = throttle(200, function() {
+
+    })
+```
+
+附节流代码：
+
+``` javascript
+    function throttle(delay, fn, debounce_mode) {
+        var last = 0,
+            timeId;
+
+        if (typeof fn !== 'function') {
+            debounce_mode = fn;
+            fn = delay;
+            delay = 250;
+        }
+
+        function wrapper() {
+            var that = this,
+                period = (new Date()).getTime() - last,
+                args = arguments;
+
+            function exec() {
+                last = (new Date()).getTime();
+                fn.apply(that, args);
+            };
+
+            function clear() {
+                timeId = undefined;
+            };
+
+            if (debounce_mode && !timeId) {
+                // debounce模式 && 第一次调用
+                exec();
+            }
+
+            timeId && clearTimeout(timeId);
+            if (debounce_mode === undefined && period > delay) {
+                // throttle, 执行到了delay时间
+                exec();
+            } else {
+                // debounce, 如果是start就clearTimeout
+                timeId = setTimeout(debounce_mode ? clear : exec, debounce_mode === undefined ? delay - period : delay);
+            }
+        };
+        return wrapper;
+    }
+
+
 ```
 
 ## 可能遇到的问题
