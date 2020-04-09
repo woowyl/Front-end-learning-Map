@@ -9,9 +9,11 @@
 面对对象编程来自于英文翻译 —— Object Oriented Programming。
 
 ## 历史
+
 面向对象出现在20世纪50年底末 60年代初，首先由MIT提出。
 
 ## 翻译
+
 Object：An object or physical entity is anything that can cast a shadow. 任何可以投影的事物都可以称作"Object"
 
 Oriented: adjusted or located in relation to surroundings or circumstances.  根据周围环境或情况进行调整或定位
