@@ -66,7 +66,7 @@
   - 教材和书最大的区别，就是有没有习题
 
 - 训练
-  - 结合刻意联系
+  - 结合刻意练习
   - 在工作中训练，尽量避免重复不动脑的劳动
 
 [原文链接:前端大神Winter的ITA1024前端精英群在线分享实录，附赠33个问题的现场解答](https://mp.weixin.qq.com/s?__biz=MzIzMzEzODYwOA==&mid=416695997&idx=1&sn=f57f073bcb3a9559f0575d0a7584a246&scene=2&srcid=0322wNBBxRLm1j1TxpnSZmX2)
