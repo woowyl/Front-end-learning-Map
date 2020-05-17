@@ -1,4 +1,5 @@
 const net = require('net');
+const parser = require('./parser');
 
 class Request {
     // method, url = host + port + path
@@ -24,14 +25,8 @@ class Request {
 
         this.headers["Content-Length"] = this.bodyText.length;
     }
-    //open(method, url)
 
     toString() {
-    //     return `$(this.method) ${this.path} HTTP/1.1\r
-    //     Object.keys(this.headers).map(key => \`${key}: ${this.header[key]})\`\r
-    //     \r
-    //     name=\`$(this.body)\`
-    // `;
     return `${this.method} ${this.path} HTTP/1.1\r
 ${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\n')}\r
 \r
@@ -55,7 +50,6 @@ ${this.bodyText}`;
                 parser.receive(data.toString());
                 if (parser.isFinished) {
                     resolve(parser.response);
-                    console.log(parser.response);
                 }
                 connection.end();
             });
@@ -205,24 +199,6 @@ class TrunkBodyParser {
         }
     }
 }
-
-//const client = net.createConnection({ port: 8088 }, () => {
-  // 'connect' listener.
-  //console.log('connected to server!');
-//   client.write('POST / HTTP/1.1\r\n');
-//   client.write('Content-Type: application/x-www-form-urlencoded\r\n');
-//   client.write('Content-Length: 11 \r\n');
-//   client.write('\r\n');
-//   client.write('name=woowyl\r\n');
-//});
-// client.on('data', (data) => {
-//   console.log(data.toString());
-//   client.end();
-// });
-// client.on('end', () => {
-//   console.log('disconnected from server');
-// });
-
 
 void async function() {
     let requst = new Request({
