@@ -11,12 +11,13 @@ const EOF = Symbol("EOF");  //end of file
 
 function emit(token) {
     let top = stack[stack.length - 1];
+    
     if (token.type == "startTag") {
         let elememt = {
             type: "element",
             children: [],
             attributes: []
-        }
+        };
 
         elememt.tagName = token.tagName;
 
@@ -36,7 +37,9 @@ function emit(token) {
             stack.push(elememt);
         }
 
-    } else if (token == "endTag") {
+        currentTextNode = null;
+
+    } else if (token.type == "endTag") {
         if (top.tagName !== token.tagName) {
             throw new Error("Tag start end does not match");
         } else {
@@ -83,6 +86,10 @@ function tagOpen(c) {
         return tagName(c);
         // return tagName;  注意区分两者的区别 用于表结构的直接吃掉并流转到下一个状态，不加括号；用于表意的不能吃掉，需要传递给下一个。
     } else {
+        emit({
+            type: "text",
+            content: c
+        });
         return;
     }
 }
@@ -106,13 +113,14 @@ function tagName(c) {
         return beforeAttributeName;
     } else if (c == "/") {
         return selfClosingStartTag;
-    } else if (c.match(/^[a-zA-z]$/)) {
+    } else if (c.match(/^[a-zA-Z]$/)) {
         currentToken.tagName += c;
         return tagName;
     } else if (c == ">") {
         emit(currentToken);
         return data;
     } else {
+        currentToken.tagName += c;
         return tagName;
     }
 }
@@ -149,7 +157,26 @@ function attributeName(c) {
 }
 
 function afterAttributeName(c) {
-  return data;
+    if (c.match(/^[\t\n\f ]$/)) {
+        return afterAttributeName;
+    } else if (c == "/") {
+        return selfClosingStartTag;
+    } else if (c == "=") {
+        return beforeAttributeValue;
+    } else if (c == ">") {
+        currentToken[currentAttribute.name] = currentAttribute.value;
+        emit(currentToken);
+        return data;
+    } else if (c == EOF) {
+        // 抛出错误   <html =22>
+    } else {
+        currentToken[currentAttribute.name] = currentAttribute.value;
+        currentAttribute= {
+            name: "",
+            value: ""
+        }
+        return attributeName(c);
+    }
 }
  
 function beforeAttributeValue(c) {
@@ -183,7 +210,7 @@ function doubleQuotedAttributeValue(c) {
 }
 
 function singleQuotedAttributeValue(c) {
-    if (c == "'") {
+    if (c == "\'") {
         currentToken[currentAttribute.name] = currentAttribute.value;
         return afterQuotedAttributeValue;
     } else if (c == "\u0000") {
@@ -242,6 +269,7 @@ function unQuotedAttributeValue(c) {
 function selfClosingStartTag(c) {
     if (c == ">") {
         currentToken.isSelfClosting = true;
+        emit(currentToken);
         return data;
     } else if (c == EOF) {
 
@@ -259,5 +287,7 @@ module.exports.parseHTML = function(html) {
     }
 
     state = state(EOF);
+    console.log(stack[0]);
+    return stack[0];
 
 }
