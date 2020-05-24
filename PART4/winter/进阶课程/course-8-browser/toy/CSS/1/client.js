@@ -1,4 +1,5 @@
 const net = require('net');
+const parser = require('./parser');
 
 class Request {
     // method, url = host + port + path
@@ -49,7 +50,6 @@ ${this.bodyText}`;
                 parser.receive(data.toString());
                 if (parser.isFinished) {
                     resolve(parser.response);
-                    console.log(parser.response);
                 }
                 connection.end();
             });
@@ -175,10 +175,8 @@ class TrunkBodyParser {
                 }
                 this.current = this.WAITING_LENGTH_LINE_END;
             } else {
-                // this.length *= 10;
-                // this.length += char.charCodeAt(0) - '0'.charCodeAt(0);
                 this.length *= 16;
-                this.length += parseInt(char, 16);
+                this.length += parseInt(char,16);
             }
         } else if (this.current === this.WAITING_LENGTH_LINE_END) {
             if (char === '\n') {
@@ -215,5 +213,7 @@ void async function() {
             name: "woowyl"
         }
     });
+    
     let response = await requst.send();
+    let dom = parser.parseHTML(response.body);
 }();
