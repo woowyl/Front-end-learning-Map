@@ -20,6 +20,12 @@ function addCSSRules(text) {
     rules.push(...ast.stylesheet.rules);
 }
 
+// step2 
+function computeCSS(elememt) {
+    console.log(rules);
+    console.log("compute CSS for Element", elememt);
+}
+
 function emit(token) {
     let top = stack[stack.length - 1];
     
@@ -40,6 +46,9 @@ function emit(token) {
                 });
             }
         }
+        
+        // step2 
+        computeCSS(elememt);
 
         top.children.push(elememt);
         elememt.parent = top;
@@ -60,7 +69,9 @@ function emit(token) {
             }
             stack.pop();
         }
+
         currentTextNode = null;
+        
     } else if (token.type == "text") {
         if (currentTextNode == null) {
             currentTextNode = {

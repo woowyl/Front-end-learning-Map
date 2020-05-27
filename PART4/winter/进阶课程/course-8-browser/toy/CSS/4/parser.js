@@ -16,8 +16,48 @@ const EOF = Symbol("EOF");  //end of file
 let rules = [];
 function addCSSRules(text) {
     var ast = css.parse(text);
-    console.log(JSON.stringify(ast, null, "  "));
+    // console.log(JSON.stringify(ast, null, "  "));
     rules.push(...ast.stylesheet.rules);
+}
+
+// step4
+function match(elememt, selector) {
+
+}
+
+// step2 
+function computeCSS(elememt) {
+    //step 3
+    var elememts = stack.slice().reverse();
+
+    //step 4
+    if (!elememt.computedStyle) {
+        elememt.computedStyle = {};
+    }
+
+    for (let rule of rules) {
+        var selectorParts = rule.selectors[0].split(" ").reverse();
+
+        if (!match(element, selectorParts[0])) 
+            continue;
+
+        let matched = false;
+
+        var j = 1;
+        for (var i = 0; i < elememts.length; i++) {
+            if (match(elememts[i], selectorParts[j])) {
+                j++;
+            }
+        }
+
+        if (j >= selectorParts.length)
+            matched = true;
+
+        if (matched) {
+            //如果匹配到 则加入
+            console.log("Element", element, "matched rule", rule);
+        }
+    }
 }
 
 function emit(token) {
@@ -40,6 +80,9 @@ function emit(token) {
                 });
             }
         }
+        
+        // step2 
+        computeCSS(elememt);
 
         top.children.push(elememt);
         elememt.parent = top;
@@ -60,7 +103,9 @@ function emit(token) {
             }
             stack.pop();
         }
+
         currentTextNode = null;
+        
     } else if (token.type == "text") {
         if (currentTextNode == null) {
             currentTextNode = {

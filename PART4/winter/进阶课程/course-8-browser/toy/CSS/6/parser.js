@@ -16,8 +16,79 @@ const EOF = Symbol("EOF");  //end of file
 let rules = [];
 function addCSSRules(text) {
     var ast = css.parse(text);
-    console.log(JSON.stringify(ast, null, "  "));
+    // console.log(JSON.stringify(ast, null, "  "));
     rules.push(...ast.stylesheet.rules);
+}
+
+// step4
+function match(elememt, selector) {
+    //step5 补充match中的内容
+    if (!selector || !element.attributes)
+        return false;
+    
+    if (selector.charAt(0) == "#") {
+        var attr = element.attributes.filter(attr => attr.name === "id")[0];
+        if (attr && attr.value === selector.replace("#", ""))
+            return true;
+    } else if (selector.charAt(0) == "#"){
+        var attr = element.attributes.filter(attr => attr.name === "class")[0];
+        if (attr && attr.value === selector.replace(".", ""))
+            return true;
+    } else {
+        if (element.tagName === selector) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// step 6
+function specificity() {
+    return 0;
+}
+
+
+// step2 
+function computeCSS(elememt) {
+    //step 3
+    var elememts = stack.slice().reverse();
+    //step 4
+    if (!elememt.computedStyle) {
+        elememt.computedStyle = {};
+    }
+
+    for (let rule of rules) {
+        var selectorParts = rule.selectors[0].split(" ").reverse();
+
+        if (!match(element, selectorParts[0])) 
+            continue;
+
+        let matched = false;
+
+        var j = 1;
+        for (var i = 0; i < elememts.length; i++) {
+            if (match(elememts[i], selectorParts[j])) {
+                j++;
+            }
+        }
+
+        if (j >= selectorParts.length)
+            matched = true;
+
+        if (matched) {
+            //如果匹配到 则加入
+            // step 6
+            //console.log("Element", element, "matched rule", rule);
+            var computedStyle = element.computedStyle;
+            for (var declaration of rule.declarations) {
+                if (!computedStyle[declaration.property]) {
+                    computedStyle[declaration.property] = {}
+                }
+                computedStyle[declaration.property].value = declaration.value;
+            }
+        }
+    }
 }
 
 function emit(token) {
@@ -40,6 +111,9 @@ function emit(token) {
                 });
             }
         }
+        
+        // step2 
+        computeCSS(elememt);
 
         top.children.push(elememt);
         elememt.parent = top;
@@ -60,7 +134,9 @@ function emit(token) {
             }
             stack.pop();
         }
+
         currentTextNode = null;
+        
     } else if (token.type == "text") {
         if (currentTextNode == null) {
             currentTextNode = {
