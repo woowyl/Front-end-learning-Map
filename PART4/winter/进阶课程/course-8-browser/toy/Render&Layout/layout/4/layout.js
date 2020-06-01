@@ -63,7 +63,7 @@ function layout(element) {
         mainSize = 'width';
         mainStart = 'left';
         mainEnd = 'right';
-        mainSign = +1;
+        mainSize = +1;
         mainBase = 0;
 
         crossSize = 'height';
@@ -74,7 +74,7 @@ function layout(element) {
         mainSize = 'width';
         mainStart = 'right';
         mainEnd = 'left';
-        mainSign = -1;
+        mainSize = -1;
         mainBase = style.width;
 
         crossSize = 'height';
@@ -85,7 +85,7 @@ function layout(element) {
         mainSize = 'height';
         mainStart = 'top';
         mainEnd = 'bottom';
-        mainSign = +1;
+        mainSize = +1;
         mainBase = 0;
 
         crossSize = 'width';
@@ -96,7 +96,7 @@ function layout(element) {
         mainSize = 'height';
         mainStart = 'bottom';
         mainEnd = 'top';
-        mainSign = -1;
+        mainSize = -1;
         mainBase = style.height;
 
         crossSize = 'width';
@@ -323,7 +323,7 @@ function layout(element) {
 
             var align = itemStyle.alignSelf || style.alignItems;
 
-            if (item === null) {
+            if (itemStyle[crossSize] === null) {
                 itemStyle[crossSize] = (align === 'stretch') ?
                     lineCrossSize : 0
             }
@@ -339,7 +339,7 @@ function layout(element) {
             }
 
             if (align === 'center') {
-                itemStyle[crossStart] = crossBase + crossSign * (lineCrossSize - itemStyle[crossSize]) / 2
+                itemStyle[crossStart] = crossBase + crossSign * (lineCrossSize - itemitemStyle[crossSize]) / 2
                 itemStyle[crossEnd] = itemStyle[crossStart] + crossSign * itemStyle[crossSize];
             }
 
@@ -352,7 +352,7 @@ function layout(element) {
         }
         crossBase += crossSign * (lineCrossSize + step);
     });
-     console.log('222',items) ;
+     console.log(items) ;
 
 }
 

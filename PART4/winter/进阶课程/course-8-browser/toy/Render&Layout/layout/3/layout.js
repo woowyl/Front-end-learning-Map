@@ -123,7 +123,7 @@ function layout(element) {
             var itemStyle = getStyle(item);
 
             if (itemStyle[mainSize] !== null || itemStyle[mainSize] !== (void 0))
-                elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]''
+                elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize];
         }
         isAutoMainSize = true;
     }

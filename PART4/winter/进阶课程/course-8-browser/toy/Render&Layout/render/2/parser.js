@@ -31,7 +31,7 @@ function match(element, selector) {
         var attr = element.attributes.filter(attr => attr.name === "id")[0];
         if (attr && attr.value === selector.replace("#", ""))
             return true;
-    } else if (selector.charAt(0) == "#"){
+    } else if (selector.charAt(0) == "."){
         var attr = element.attributes.filter(attr => attr.name === "class")[0];
         if (attr && attr.value === selector.replace(".", ""))
             return true;
