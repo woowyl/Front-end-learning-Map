@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+                border:1px solid black;
+                padding:10px;
+            }
+            .both {
+                border: 1px solid black;
+                clear: both;
+                direction: rtl;
+            }
+            .black {
+                float: left;
+                margin: 0;
+                background-color: black;
+                color: #fff;
+                width:20%;
+            }
+            .red {
+                float: right;
+                margin: 0;
+                background-color: pink;
+                width:20%;
+                height: 500px;
+            }
+            .wrapper p {
+                width: 45%;
+            }
+
+            #replaced {
+  content: url("https://mdn.mozillademos.org/files/12668/MDN.svg");
+}
+
+#replaced::after { /* will not show if element replacement is supported */
+  /* content: " (" attr(id) ")";  */
+}
+
+.item-wrapper {
+    display: flex;
+    direction:rtl;
+}
+
+.item {
+    display: inline-block;
+    background: cornflowerblue;
+    height: 50px;
+    width: 50px;
+    border: 2px solid #000;
+}
+.orphans {
+    background-color: #8cffa0;
+  height: 150px;
+  columns: 5;
+  orphans: 7;
+}
+.orphans p { 
+    background-color: #8ca0ff;
+}
+
+.orphans p:first-child {
+  margin-top: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <p class="black">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor. Fusce pulvinar lacus ac dui.</p>
+        <p class="red">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor.</p>
+        <p class="both">This paragraph clears both.</p>
+
+
+        <div id="replaced">Mozilla</div>
+      </div>
+
+
+    <div class="item-wrapper">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+      </div>
+
+
+      <div class="orphans">
+        <p>This is the first paragraph containing some text.</p>
+        <p>This is the second paragraph containing some more text than the first one. It is used to demonstrate how orphans work.</p>
+        <p>This is the third paragraph. It has a little bit more text than the first one.</p>
+      </div>
+</body>
+</html>
