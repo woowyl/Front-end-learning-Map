@@ -66,6 +66,27 @@
 .orphans p:first-child {
   margin-top: 0;
 }
+
+
+.hyphens p { 
+  width: 55px;
+  border: 1px solid black;
+ }
+.hyphens p.none {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+.hyphens p.manual {
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual;
+}
+.hyphens p.auto {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
     </style>
 </head>
 <body>
@@ -90,6 +111,21 @@
         <p>This is the first paragraph containing some text.</p>
         <p>This is the second paragraph containing some more text than the first one. It is used to demonstrate how orphans work.</p>
         <p>This is the third paragraph. It has a little bit more text than the first one.</p>
+      </div>
+
+
+      <div class="hyphens">
+        <ul>
+            <li><code>none</code>: no hyphen; overflow if needed
+              <p lang="en" class="none">An extreme&shy;ly long English word</p>
+            </li>  
+            <li><code>manual</code>: hyphen only at &amp;hyphen; or &amp;shy; (if needed)
+              <p lang="en" class="manual">An extreme&shy;ly long English word</p>
+            </li>
+            <li><code>auto</code>: hyphen where the algo is deciding (if needed)
+              <p lang="en" class="auto">An extreme&shy;ly long English word</p>
+            </li>
+          </ul>
       </div>
 </body>
 </html>
