@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        width: 300px;
+    }
+    .item {
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: middle;
+        height: 100px;
+        width: 100px;
+        background: green;
+        border: 1px solid #fff;
+
+        line-height: 100px;
+        text-align: center;
+        font-size: 50px;
+    }
+</style>
+<body>
+    <div id="container">
+        
+    </div>
+</body>
+
+<script>
+    //
+    let pattern = [
+        [2,0,0],
+        [0,1,0],
+        [0,0,0]
+    ]
+
+    let color = 1;
+
+    function show(pattern) {
+
+        var parentDom = document.getElementById("container");
+        parentDom.innerHTML = '';
+        
+        for (let i= 0; i < pattern.length; i++) {
+            for (let j = 0; j < pattern[i].length; j++) {
+                let dom = document.createElement("div");
+                dom.classList.add("item");
+                dom.addEventListener("click", () => move(j, i));
+                dom.innerHTML = pattern[i][j] == 2 ? '❌' : pattern[i][j] == 1 ? '⭕️' : '';
+                parentDom.appendChild(dom);
+            }
+        }
+    }
+
+    show(pattern);
+
+    function move(x, y) {
+        if (!!pattern[y][x]) return;
+        pattern[y][x] = color;
+        show(pattern);
+        
+        if (check(pattern, color)) {
+            alert(color==1 ? "⭕️is win" : "❌ is win");
+        }
+        
+        color = 3 - color;
+        if (willWin(pattern, color)) {
+            console.log(color == 1 ? "⭕️ will win" : "❌ will win");
+        }
+    };
+
+    function check(pattern, color, x, y) {
+        for (let i = 0; i < 3; i++) {
+            let win = true;
+            for (let j = 0; j < 3; j++) {
+                if (pattern[i][j] !== color) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return true;
+            }
+        }
+
+        for (let i = 0; i < 3; i++) {
+            let win = true;
+            for (let j = 0; j < 3; j++) {
+                if (pattern[j][i] !== color) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return true;
+            }
+        }
+
+        {
+            let win = true;
+            for (let j = 0; j < 3; j++) {
+                if (pattern[j][j] !== color) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return true;
+            }
+        }
+
+        {
+            let win = true;
+            for (let j = 0; j < 3; j++) {
+                if (pattern[j][2-j] !== color) {
+                    win = false;
+                    break;
+                }
+            }
+            if (win) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function clone(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+
+    function willWin(pattern, color) {
+        // debugger;
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (pattern[i][j] !== 0) continue;
+                let tmp = clone(pattern);
+                tmp[i][j] = color; 
+                if (check(tmp, color)) {
+                    return true;
+                }
+            }
+        }
+         return false;
+    }
+</script>
+</html>
