@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻路问题</title>
+    <style>
+        .cell {
+            width:6px;
+            height:6px;
+            background-color: gray;
+            border-bottom:solid 1px white;
+            border-right:solid 1px white;
+        }
+        .cell.selected {
+            background-color: black;
+        }
+        #container {
+            display: flex;
+            width: 701px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <button class="save">save</button>
+    <button class="clear">clear</button>
+</body>
+
+<script>
+    // 一个10000个0的一位数组
+    var map1 = new Array(1001).join(0).split("").map(s => Number(s));
+    var map2 = Array.apply(null,{ length: 10001 }).map(() => 0)
+    var map = localStorage.map ? JSON.parse(localStorage.map) : new Array(10000).fill(0);
+
+    let container = document.getElementById("container");
+    let save = document.getElementsByClassName("save");
+    let clearBtn = document.getElementsByClassName("clear");
+    let mouse = false, clear = false;
+
+    for (let i = 0; i < 100; i++) {
+        for (let j = 0; j < 100; j++) {
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.setAttribute("i", i);
+            cell.setAttribute("j", j);
+            if (map[100*i+j] === 1) {
+                cell.classList.add("selected");
+            }
+            container.appendChild(cell);
+        }
+    }
+    container.addEventListener("mousemove", (e) => {
+        if (e.target.classList.contains("cell") && mouse) {
+            let i = Number(e.target.getAttribute("i"));
+            let j = Number(e.target.getAttribute("j"));
+            console.log(i, j);
+            
+            if (clear) {
+                e.target.classList.remove("selected");
+                map[100*i+j] = 0;
+            } else {
+                map[100*i+j] = 1;
+                e.target.classList.add("selected")
+            }
+        }  
+
+    })
+    document.addEventListener("mousedown", (e)=> {
+        mouse = true;
+        clear = (e.button === 2);
+    });
+
+    document.addEventListener("mouseup", ()=> { mouse = false});
+
+    container.addEventListener("contextmenu", e => e.preventDefault());
+
+    save[0].addEventListener("click", ()=> {
+        localStorage.map = JSON.stringify(map);
+    })
+
+    clearBtn[0].addEventListener("click", ()=> {
+        delete localStorage.map ;
+        window.location.reload();
+    })
+    
+    function path(map, start, end) {
+
+    }
+
+</script>
+</html>
