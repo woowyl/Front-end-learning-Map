@@ -85,31 +85,54 @@
         delete localStorage.map ;
         window.location.reload();
     })
+
+    function sleep(t) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, t);
+        })
+    }
     
-    function findPath(map, start, end) {
+    async function findPath(map, start, end) {
         // 重新生成一份map 用于记录是否已放入过队列中，不直接使用map防止污染
         map = map.slice();
         // 用数组实现广度优先搜索
-        let queue = [start];
+        let queue = [start], path = [];
+        container.children[end[1] * 100 + end[0]].style.backgroundColor = "red";
 
-        function insert([x, y]) {
+        async function insert([x, y], pre) {
             if (map[100 * y + x] !== 0) return;
             if (x < 0 || y < 0 || x >= 100 || y >= 100) return;
-            map[100 * y + x] = 2;
+            // 这步是关键，将
+            map[100 * y + x] = pre;
+            container.children[y * 100 + x].style.backgroundColor = "lightgreen";
+            await sleep(5);
             queue.push([x, y]);
         }
 
         while (queue.length) {
             let [x, y] = queue.shift();   // pop unshift/push shift
-            console.log(x, y);
-            if (x === end[0] && y === end[1])
-                return true;
-            insert([x-1, y]);
-            insert([x+1, y]);
-            insert([x, y-1]);
-            insert([x-1, y+1]);
+        
+            if (x === end[0] && y === end[1]){
+                // 画出路线，放入paht中
+                while (x !== start[0] || y!== start[1]) {
+                    path.push([x, y]);
+                    container.children[y * 100 + x].style.backgroundColor = "pink";
+                    [x, y] = map[100 * y + x];
+                }
+                return path;
+            }
+            await insert([x-1, y], [x, y]);
+            await insert([x+1, y], [x, y]);
+            await insert([x, y-1], [x, y]);
+            await insert([x-1, y+1], [x, y]);
+
+            // 支持斜线
+            await insert([x-1, y-1], [x, y]);
+            await insert([x+1, y-1], [x, y]);
+            await insert([x-1, y+1], [x, y]);
+            await insert([x+1, y+1], [x, y]);
         }
-        return false;
+        return null;
     }
 
 </script>

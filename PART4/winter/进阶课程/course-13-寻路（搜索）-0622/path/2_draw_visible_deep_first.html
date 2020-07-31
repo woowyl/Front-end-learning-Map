@@ -85,29 +85,39 @@
         delete localStorage.map ;
         window.location.reload();
     })
+
+    function sleep(t) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, t);
+        })
+    }
     
-    function findPath(map, start, end) {
+    async function findPath(map, start, end) {
         // 重新生成一份map 用于记录是否已放入过队列中，不直接使用map防止污染
         map = map.slice();
-        // 用数组实现广度优先搜索
-        let queue = [start];
+        // 用数组实现深度优先搜索
+        let stack = [start];
+        container.children[end[1] * 100 + end[0]].style.backgroundColor = "red";
 
-        function insert([x, y]) {
+        async function insert([x, y]) {
             if (map[100 * y + x] !== 0) return;
             if (x < 0 || y < 0 || x >= 100 || y >= 100) return;
+            // 符合条件的标志位2  并放入队列
             map[100 * y + x] = 2;
-            queue.push([x, y]);
+            container.children[y * 100 + x].style.backgroundColor = "lightgreen";
+            await sleep(5);
+            stack.push([x, y]);
         }
 
-        while (queue.length) {
-            let [x, y] = queue.shift();   // pop unshift/push shift
-            console.log(x, y);
+        while (stack.length) {
+            let [x, y] = stack.pop();   // pop unshift/push shift
+        
             if (x === end[0] && y === end[1])
                 return true;
-            insert([x-1, y]);
-            insert([x+1, y]);
-            insert([x, y-1]);
-            insert([x-1, y+1]);
+            await insert([x, y-1]);
+            await insert([x, y+1]);
+            await insert([x-1, y]);
+            await insert([x+1, y]);
         }
         return false;
     }
