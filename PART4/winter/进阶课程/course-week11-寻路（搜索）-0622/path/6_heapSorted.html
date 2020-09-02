@@ -49,7 +49,7 @@
             let minIndex = 0;
             for (let i= 1; i< this.data.length; i++) {
                 if (this.compare(this.data[i], min) < 0) {
-                    min = this.data[i];
+                    min = this.data[0];
                     minIndex = i;
                 }
             }
@@ -136,8 +136,8 @@
         }
 
         // 用数组实现广度优先搜索
-        let collection = new Sorted([start], (a, b) => distance(a) - distance(b)),
-        path = [];
+        let collection = new Sorted([start], (a, b) => distance(a) - distance(b))
+
         container.children[end[1] * 100 + end[0]].style.backgroundColor = "red";
 
         async function insert([x, y], pre) {
@@ -147,11 +147,11 @@
             map[100 * y + x] = pre;
             container.children[y * 100 + x].style.backgroundColor = "lightgreen";
             await sleep(5);
-            collection.insert([x, y]);
+            container.insert([x, y]);
         }
 
-        while (collection.length) {
-            let [x, y] = collection.take();   // pop unshift/push shift
+        while (container.length) {
+            let [x, y] = container.take();   // pop unshift/push shift
         
             if (x === end[0] && y === end[1]){
                 // 画出路线，放入paht中
