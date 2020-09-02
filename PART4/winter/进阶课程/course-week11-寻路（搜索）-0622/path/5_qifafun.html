@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻路问题</title>
+    <style>
+        .cell {
+            width:6px;
+            height:6px;
+            background-color: gray;
+            border-bottom:solid 1px white;
+            border-right:solid 1px white;
+        }
+        .cell.selected {
+            background-color: black;
+        }
+        #container {
+            display: flex;
+            width: 701px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <button class="save">save</button>
+    <button class="clear">clear</button>
+</body>
+
+<script>
+
+    //加入启发函数
+    /**
+     * 根据终点的关系得到一个启发函数，优先找启发函数推荐的点， 只要启发函数返回值一个小于真实到终点的这个距离的（小于最优路径）
+     * **/
+    // 一个10000个0的一位数组
+
+    class Sorted {
+        constructor(data, compare) {
+            this.data = data;
+            this.compare = compare;
+        }
+        take() {
+            if(!this.data.length)
+                return;
+            let min = this.data[0];
+            let minIndex = 0;
+            for (let i= 1; i< this.data.length; i++) {
+                if (this.compare(this.data[i], min) < 0) {
+                    min = this.data[0];
+                    minIndex = i;
+                }
+            }
+            this.data[minIndex] = this.data[this.data.length-1];
+            this.data.pop();
+            return min;
+        }
+        insert(v){
+            this.data.push(v)
+        }
+        get length() {
+            return this.data.length
+        }
+    }
+
+    var map1 = new Array(1001).join(0).split("").map(s => Number(s));
+    var map2 = Array.apply(null,{ length: 10001 }).map(() => 0)
+    var map = localStorage.map ? JSON.parse(localStorage.map) : new Array(10000).fill(0);
+
+    let container = document.getElementById("container");
+    let save = document.getElementsByClassName("save");
+    let clearBtn = document.getElementsByClassName("clear");
+    let mouse = false, clear = false;
+
+    for (let i = 0; i < 100; i++) {
+        for (let j = 0; j < 100; j++) {
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.setAttribute("i", i);
+            cell.setAttribute("j", j);
+            if (map[100*i+j] === 1) {
+                cell.classList.add("selected");
+            }
+            container.appendChild(cell);
+        }
+    }
+    container.addEventListener("mousemove", (e) => {
+        if (e.target.classList.contains("cell") && mouse) {
+            let i = Number(e.target.getAttribute("i"));
+            let j = Number(e.target.getAttribute("j"));
+            console.log(i, j);
+            
+            if (clear) {
+                e.target.classList.remove("selected");
+                map[100*i+j] = 0;
+            } else {
+                map[100*i+j] = 1;
+                e.target.classList.add("selected")
+            }
+        }  
+
+    })
+    document.addEventListener("mousedown", (e)=> {
+        mouse = true;
+        clear = (e.button === 2);
+    });
+
+    document.addEventListener("mouseup", ()=> { mouse = false});
+
+    container.addEventListener("contextmenu", e => e.preventDefault());
+
+    save[0].addEventListener("click", ()=> {
+        localStorage.map = JSON.stringify(map);
+    })
+
+    clearBtn[0].addEventListener("click", ()=> {
+        delete localStorage.map ;
+        window.location.reload();
+    })
+
+    function sleep(t) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, t);
+        })
+    }
+
+    
+    async function findPath(map, start, end) {
+        // 重新生成一份map 用于记录是否已放入过队列中，不直接使用map防止污染
+        map = map.slice();
+
+        function distance([x, y]) {
+            return (x - end[0]) ** 2 + (y-end[1]) ** 2
+        }
+
+        // 用数组实现广度优先搜索
+        let collection = new Sorted([start], (a, b) => distance(a) - distance(b))
+
+        container.children[end[1] * 100 + end[0]].style.backgroundColor = "red";
+
+        async function insert([x, y], pre) {
+            if (map[100 * y + x] !== 0) return;
+            if (x < 0 || y < 0 || x >= 100 || y >= 100) return;
+            // 这步是关键，将前置节点放入元素中
+            map[100 * y + x] = pre;
+            container.children[y * 100 + x].style.backgroundColor = "lightgreen";
+            await sleep(5);
+            container.insert([x, y]);
+        }
+
+        while (container.length) {
+            let [x, y] = container.take();   // pop unshift/push shift
+        
+            if (x === end[0] && y === end[1]){
+                // 画出路线，放入paht中
+                while (x !== start[0] || y!== start[1]) {
+                    path.push([x, y]);
+                    container.children[y * 100 + x].style.backgroundColor = "pink";
+                    [x, y] = map[100 * y + x];
+                }
+                return path;
+            }
+            await insert([x-1, y], [x, y]);
+            await insert([x+1, y], [x, y]);
+            await insert([x, y-1], [x, y]);
+            await insert([x-1, y+1], [x, y]);
+
+            // 支持斜线
+            await insert([x-1, y-1], [x, y]);
+            await insert([x+1, y-1], [x, y]);
+            await insert([x-1, y+1], [x, y]);
+            await insert([x+1, y+1], [x, y]);
+        }
+        return null;
+    }
+
+</script>
+</html>
