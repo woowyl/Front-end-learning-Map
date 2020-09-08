@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    var regexp = /([0-9\.)]+)|([ ]+)|([\n\r]+)|(\+)|(\-)|(\*)|(\/)/g;
+
+    var dictionary= ["Number", "Whitespace","LineTerminator","+","-","*", "/"];
+
+
+    function* tokenize(source) {
+         var result = null;
+         var lastIndex = 0;
+
+         do {
+             lastIndex = regexp.lastIndex;
+             result = regexp.exec(source);
+
+             if (!result) break;
+
+             if (regexp.lastIndex- lastIndex > result[0].length) {
+                 console.log(lastIndex, regexp.lastIndex, result[0].length);
+                 throw new Error(`Unexcepted token ${source.slice(lastIndex, regexp.lastIndex - result[0].length)}!`)
+             }
+
+             let token = {
+                 type: null,
+                 value: null
+             }
+
+             for(var i = 0; i< dictionary.length; i++) {
+                 if (result[i + 1])
+                    // console.log(dictionary[i]);
+                    token.type = dictionary[i]
+             }
+             
+            //  console.log(result[0]);
+            token.value = result[0];
+
+            yield token;
+         } while(result);
+
+         yield { type: "EOF"}
+    }
+
+    
+
+    function Expression() {
+        
+    }
+
+    for(let token of  tokenize("1024 + 10 * 25")) {
+        console.log(token);
+    }
+    // tokenize("1024 + 10 * 25")
+</script>
