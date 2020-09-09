@@ -24,7 +24,7 @@
                     node[c] = Object.create(null);
                 node = node[c];
             }
-            if (!("$") in node) 
+            if (!("$" in node))
                 node["$"] = 0;
             
             node["$"] ++
@@ -42,7 +42,24 @@
                     visit(node[p], word + p);
                 }
             }
+            visit(this.root, "");
+            console.log(maxWord,  max);
         }
     }
 
+
+    function randomWord(length) {
+        let s = "";
+        for (let i = 0; i < length; i++) {
+            s += String.fromCharCode(Math.random() * 26 + "a".charCodeAt(0));
+        }
+        return s;
+
+    }
+
+    let trie = new Trie;
+
+    for (let i= 0; i < 100000; i++) {
+        trie.insert(randomWord(4));
+    }
 </script>
