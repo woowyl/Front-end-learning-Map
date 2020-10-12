@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let object = {
+        a: 1,
+        b: 2
+    }
+
+    let proxy = new Proxy(object, {
+        get (obj, prop) {
+            console.log(obj, prop);
+            return obj[prop]
+        },
+        defineProperty(obj, prop, desc) {
+            console.log(arguments);
+            return Object.defineProperty(obj, prop, desc)
+        }
+    }
+
+    )
+</script>
+</html>
