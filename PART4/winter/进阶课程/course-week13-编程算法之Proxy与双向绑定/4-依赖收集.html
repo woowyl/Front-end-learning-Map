@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    var handlers = new Map();
+    let usedReactivities = [];
+
+    let object = {
+        a: 1,
+        b: 2
+    }
+
+    function reactive(obj) {
+        return new Proxy(obj, {
+            get (obj, prop) {
+                usedReactivities.push([obj, prop])
+                console.log(obj, prop);
+                return obj[prop]
+            },
+            set (obj, prop, val) {
+                console.log(obj, prop, val);
+                obj[prop] = val;
+                if (handlers.get(obj))
+                    if (handlers.get(obj).get(prop))
+                        for (let handler of handlers.get(obj).get(prop))
+                            handler()
+                return obj[prop];
+            }
+        })
+    }
+
+
+    function effect(handler) {
+        // 依赖收集
+        usedReactivities = []
+        handler();
+        // handlers.push(handler);
+        for (let usedReactivity of usedReactivities) {
+            let [obj, prop] = usedReactivity;
+            if (!handlers.has(obj)) {
+                handlers.set(obj, new Map());
+            }
+
+            if (!handlers.get(obj).has(prop)) {
+                handlers.get(obj).set(prop, [])
+            }
+
+            handlers.get(obj).get(prop).push(handler);
+        }
+    }
+
+    let dummy, v12, v1, v2;
+
+    let p1 = reactive({a: 1});
+    
+    let p2 = reactive({a: 2})
+
+    // effect通过 get去找到依赖关系 坐依赖收集
+    effect(() => v12 = p1.a + p2.a);
+    effect(() => v1 = p1.a);
+    effect(() => v2 = p2.a);
+
+    console.log(dummy);
+
+    proxy.a = 2;
+
+    console.log(dummy);
+
+</script>
+</html>
