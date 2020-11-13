@@ -5,7 +5,7 @@ function create(Cls, attributes, ...children) {
     if (typeof Cls === 'string') {
         o = new Wrapper(Cls)
     } else {
-        o = new Cls();
+        o = new new Cls();
     }
 
     for(let name in attributes) {
@@ -51,37 +51,25 @@ class Wrapper {
     }
 }
 
-class MyComponent {
+class Div {
     constructor(config) { 
         this.children = [];
-        this.attributes = new Map();
+        this.root = document.createElement('div');
     }
     set class(v) { //property
         console.log("Parent::class", v);
     } 
     setAttribute(name, value) {  //attribute
-        this.attributes.set(name, value);
+        this.root.setAttribute(name, value); 
     } 
     appendChild(child) {
         this.children.push(child);
-        //this.slot.appendChild(child);
-    }
-
-    render() {
-        return <article>
-            <header>I am a header</header>
-            {this.slot}
-            <footer>I am a footer</footer>
-        </article>
     }
     mountTo(parent) {
-        this.slot = <div></div>
-        //parent.appendChild(this.root);
+        parent.appendChild(this.root);
         for (let child of this.children) {
-            this.slot.appendChild(child)
-            //child.mountTo(this.slot);
+            child.mountTo(this.root);
         }
-        this.render().mountTo(parent);
     }
 }
 
@@ -95,9 +83,7 @@ class MyComponent {
 **/
 
 
-let component = <MyComponent>
-    <div>hello wrold</div>
-</MyComponent>
+let component = <div>text </div>
 console.log(component);
 
 component.mountTo(document.body);
