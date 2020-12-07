@@ -12,7 +12,7 @@
             white-space: nowrap;
             outline: solid 1px blue;
             margin: auto;
-            zoom: .5;
+            /* zoom: .5; */
             overflow: hidden;
         }
         .carousel img{
@@ -46,6 +46,7 @@
             for(let d of this.data) {
                 let element = document.createElement("img");
                 element.src = d;
+                element.addEventListener("dragstart", event => event.preventDefault())
                 this.root.appendChild(element);
             }
 
@@ -57,8 +58,8 @@
                 let current = this.root.childNodes[position];
                 let next = this.root.childNodes[nextPosition]
 
-                current.style.transition = "ease 0s"
-                next.style.transition = "ease 0s"
+                current.style.transition = "none"
+                next.style.transition = "none"
 
                 current.style.transform = `translateX(${- 100 * position}%)`;
                 next.style.transform = `translateX(${100 - 100 * nextPosition}%)`;
@@ -73,22 +74,61 @@
                     position = nextPosition;
                 }, 16)  //16是一帧的时间  1000/60s
                 
-                // 使用reqestAnimationFrame需要嵌套两层
-                // requestAnimationFrame(()=>{
-                //     requestAnimationFrame(() => {
-                //         current.style.transition = "ease .5s";
-                //         next.style.transition = "ease .5s";
-
-                //         current.style.transform = `translateX(${- 100 - 100 * position}%)`;
-                //         next.style.transform = `translateX(${- 100 * nextPosition}%)`;
-
-                //         position = nextPosition;
-                //     })
-                // })
-
-                setTimeout(nextPic, 3000)
             } 
-            setTimeout(nextPic, 3000)
+            this.root.addEventListener("mousedown", event => {
+                let startX = event.clientX, startY = event.clientY;
+                
+                let lastPosition = (position - 1 + this.data.length) % this.data.length;
+                let nextPosition = (position + 1) % this.data.length;
+                
+                let current = this.root.childNodes[position];
+                let last = this.root.childNodes[lastPosition];
+                let next = this.root.childNodes[nextPosition];
+
+                current.style.transition = "none"
+                last.style.transition = "none"
+                next.style.transition = "none"
+
+                current.style.transform = `translateX(${- 500 * position}px)`;
+                last.style.transform = `translateX(${-500 - 500 * lastPosition}px)`;
+                next.style.transform = `translateX(${500 - 500 * nextPosition}px)`;
+
+                let move = event => {
+
+                    current.style.transform = `translateX(${event.clientX-startX - 500 * position}px)`;
+                    last.style.transform = `translateX(${event.clientX-startX - 500 - 500 * lastPosition}px)`;
+                    next.style.transform = `translateX(${event.clientX-startX + 500 - 500 * nextPosition}px)`;
+
+                    // console.log( event.clientX-startX, event.clientY-startY);
+                }
+
+                let up = event => {
+
+                    let offset = 0;
+
+                    if (event.clientX - startX > 250) {
+                        offset = 1
+                    } else if (event.clientX - startX < -250) {
+                        offset = -1;
+                    }
+
+                    // 打开动画
+                    current.style.transition = "";
+                    last.style.transition = "";
+                    next.style.transition = "";
+
+                    current.style.transform = `translateX(${offset * 500 - 500 * position}px)`;
+                    last.style.transform = `translateX(${offset * 500 - 500 - 500 * lastPosition}px)`;
+                    next.style.transform = `translateX(${offset * 500 + 500 - 500 * nextPosition}px)`;
+
+                    position = (position - offset + this.data.length) % this.data.length;
+
+                    document.removeEventListener("mousemove", move);
+                    document.removeEventListener("mouseup", up);
+                };
+                    document.addEventListener("mousemove", move);
+                    document.addEventListener("mouseup", up);
+            })
         }
     }
 
