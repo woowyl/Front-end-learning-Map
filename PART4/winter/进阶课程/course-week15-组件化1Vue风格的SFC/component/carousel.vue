@@ -2,22 +2,21 @@
     <div>
         <img />
     </div>
-</template><script>
+</template>
+
+
+<script>
 export default {
     el: '#example',
     data: {
         message: 'Hello'
     },
     computed: {
-    // a computed getter
-    reversedMessage: function () {
-      // `this` points to the vm instance
-        let i = 1;
-        while(i < 100) {
-            i ++;
+        // a computed getter
+        reversedMessage: function () {
+        // `this` points to the vm instance
+            return this.message.split('').reverse().join('')
         }
-        return this.message.split('').reverse().join('')
-    }
     }
 }
 

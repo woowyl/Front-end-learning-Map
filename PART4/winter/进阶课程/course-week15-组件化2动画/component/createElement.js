@@ -8,7 +8,7 @@ export function create(Cls, attributes, ...children) {
     }
 
     for(let name in attributes) {
-        o.setAttribute(name, attributes[name])  
+        o.setAttribute(name, attributes[name])
     }
 
     let visit = (children) => {
