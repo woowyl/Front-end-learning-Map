@@ -1,6 +1,5 @@
 
 function create(Cls, attributes, ...children) {
-    
     let o;
     if (typeof Cls === 'string') {
         o = new Wrapper(Cls)
@@ -44,6 +43,7 @@ class Wrapper {
         this.children.push(child);
     }
     mountTo(parent) {
+        debugger
         parent.appendChild(this.root);
         for (let child of this.children) {
             child.mountTo(this.root);
@@ -57,9 +57,10 @@ class MyComponent {
         this.attributes = new Map();
     }
     set class(v) { //property
-        console.log("Parent::class", v);
+        console.log("Parent::property", v);
     } 
     setAttribute(name, value) {  //attribute
+        console.log("Parent::attribute", value);
         this.attributes.set(name, value);
     } 
     appendChild(child) {
@@ -94,8 +95,8 @@ class MyComponent {
     </div>
 **/
 
-
-let component = <MyComponent>
+// 小写参数是字符串，大写参数是Object
+let component = <MyComponent class="cls">
     <div>hello wrold</div>
 </MyComponent>
 console.log(component);

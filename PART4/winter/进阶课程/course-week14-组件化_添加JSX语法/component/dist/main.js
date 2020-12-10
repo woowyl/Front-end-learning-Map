@@ -7,11 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/*!*****************!*\
-  !*** ./main.js ***!
-  \*****************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements:  */
-eval("function create() {\n  console.log(arguments);\n}\n\nvar component = create(Cls, {\n  id: \"a\"\n});\ncomponent.setAttribute(\"id\", \"a\");\n\n//# sourceURL=webpack://component/./main.js?");
+/******/ 	"use strict";
 /******/ })()
 ;

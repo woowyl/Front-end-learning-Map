@@ -1,4 +1,4 @@
-
+import {Carousel2} from "./carousel.vue";
 import {create, Text, Wrapper} from './createElement'
 
 class Carousel {
@@ -18,7 +18,7 @@ class Carousel {
     }
 
     render() {
-       
+        console.log(this);
         let children = this.data.map( url => {
             let element = <img src={url}/>;
             element.addEventListener("dragstart", event => event.preventDefault());
