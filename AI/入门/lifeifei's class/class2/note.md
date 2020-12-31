@@ -1,6 +1,9 @@
-# 
+# 图像分类  
 
 ## Fisrt classifier: Nearest Neighbor
+1. 在训练集中保存所有的图片和标签，
+2. 输入图片之后，在训练集中找到最接近的图片和其标签
+
 - 训练集
 ```python
     def train(images, lables):
@@ -15,6 +18,7 @@
         # Use model to predict labels
         return test_labels
 ```
+
 > CIFAR 10 数据集，可用于练习
 
 ## 0. L1 distance d(I1,I2) = 
@@ -51,5 +55,24 @@
             
             return Ypred
 ```
+这种方式在训练时只需要O(1)的时间复杂度
+但是在测试集上却又O(n)的时间复杂度。这刚好和我们所需要的相反，我们需要在训练的时候可以时间长一点，但使用时越快越好。
 
 ### 2. K nearest neighbors
+为了避免，单个点对整个图片造成的噪点影响，可以采用KNN的方式，选取最近的K个点，然后根据这K个点中颜色最多的那个来决定当前点的颜色。
+![](./images/knn.png)
+
+
+#### 2.1 Distance Metric
+- L1 (Manhattan) distance
+
+- L2 (Euclidean) distance
+
+
+demo about knn
+http://vision.stanford.edu/teaching/cs231n-demos/knn/
+
+### 思考的两个问题
+当我们在思考计算机视觉时，有两种考虑方式
+ - 在平面上的高维点概念  because the pixels of the image,     allow us to think of these images as high dimensional vectors
+ - 具体图像观察 looking at the concrete images
