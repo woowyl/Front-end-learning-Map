@@ -65,14 +65,39 @@
 
 #### 2.1 Distance Metric
 - L1 (Manhattan) distance
-
+    取决于你选择的的坐标系统，如果你转动坐标轴，将会改变点之间的L1距离
 - L2 (Euclidean) distance
+    L2是一个确定的，无论你如何旋转坐标轴,L2的值都不会发生变化
 
+如果你输入的特征向量，如果向量中的一些值有一些重要意义，对你的任务获取L1可能合适，如果只是一些普通的值，你不知道他们实际上代表的含义，那么L2可能更自然一点
+![](./images/distance.png)
+
+KNN不光可以用于颜色的分类，只要是可以标识成数据并且可以计算距离的问题，都可以使用这个算法，比如文字，图像等
 
 demo about knn
 http://vision.stanford.edu/teaching/cs231n-demos/knn/
 
+### Hyperparameters
+
+what is the best value of K to use?
+what is the best distance to use?
+
+他们不一定能从训练数据中学到，你要提前为算法做出选择。并且这是没有办法从数据中学习到的
+
+#### Setting Hyperparameters
+在设置数据集比例时需要注意的问题
+![](./images/hyperparameters.png)
+![](./images/hyperparameters2.png)
+
+KNN 基本不会用在图片处理上，
+- Very slow at test time
+- Distance metrics on pixels are not informative
+- Curse of dimensinality
 ### 思考的两个问题
 当我们在思考计算机视觉时，有两种考虑方式
  - 在平面上的高维点概念  because the pixels of the image,     allow us to think of these images as high dimensional vectors
  - 具体图像观察 looking at the concrete images
+
+
+ ## Linear Classification
+ 
