@@ -11,6 +11,8 @@
 #### 1.1.1 Multiclass  SVM 
 $$\KaTeX$$ 
 $$e=mc^2$$
+
+引入Regularization去解决
  
 
 #### 1.1.2 Softmax Classifier (Multinomial Logistic Regression)
