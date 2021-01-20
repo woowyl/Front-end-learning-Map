@@ -33,10 +33,15 @@
 
 ## 分类
 
-- 初始化
-- 开发
-- 测试
-- 发布
+- 初始化 init
+- 开发 dev
+- 测试 test
+- 发布 publish
+
+(build  add)
 
 ## yeoman 
 generator的generator
+
+## 自己实现一个类似yeoman的工具
+需要用到 tty ttys和 readline包
