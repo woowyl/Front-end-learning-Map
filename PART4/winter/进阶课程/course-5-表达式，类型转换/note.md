@@ -29,11 +29,15 @@
     - a--
     - --a
     - a--
-- Unay
+- Unay 单目
  -  delete a.b
  - !a
  - void foo()
  - await a
  - + a
  
+- Logical
+ - &&
+ - ||
+ - !
 ## Runtime
