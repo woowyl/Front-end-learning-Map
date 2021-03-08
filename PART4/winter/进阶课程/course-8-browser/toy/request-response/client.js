@@ -1,5 +1,24 @@
-const net = require('net');
+ const net = require('net');
 
+/**
+ * 下面是一个简单的http response
+ * 
+ * 
+ * HTTP/1.1 200 OK                          => status line
+ * Content-Type: text/html                  => headers start
+ * Date: Mon, 23 Dec 2019 06:46:19 GMT      |
+ * Connection: keep-alive                   |
+ * Transfer-Encoding: chunked               => headers end
+ * 
+ * 26                                       => body start 
+ * <html><body> Hello World<body><html>      |
+ * 26                                        |
+ * <html><body> Hello World<body><html>      |
+ * 0                                        => bosy end
+ *  
+ */
+
+//浏览器的Requst对象
 class Request {
     // method, url = host + port + path
     // body: k/v
@@ -67,7 +86,11 @@ class Response {
 
 }
 
+/**
+ * 状态机解析response的buffer
+ */
 class ResponseParser {
+    // 状态机
     constructor() {
         this.WAITING_STATUS_LINE = 0;
         this.WAITING_STATUS_LINE_END = 1;
@@ -121,8 +144,10 @@ class ResponseParser {
                 this.current = this.WAITING_HEADER_SPACE;
             } else if (char === '\r') {
                 this.current = this.WAITING_HEADER_BLOCK_END;
-                if (this.headers['Transfer-Encoding'] === 'chunked')
+                // 进入到下一个状态机
+                if (this.headers['Transfer-Encoding'] === 'chunked') {
                     this.bodyParser = new TrunkBodyParser();
+                }
             } else {
                 this.headerName  += char;
             }
@@ -152,7 +177,9 @@ class ResponseParser {
         }
     }
 }
-
+/***
+ * 这里也是一个状态机，解析response下的body内容，body内容一般比较大，会流式接收
+ */
 class TrunkBodyParser {
     constructor() {
         this.WAITING_LENGTH = 0;
@@ -202,6 +229,9 @@ class TrunkBodyParser {
     }
 }
 
+// 这里发送一个HTTP请求 
+/**
+ */
 void async function() {
     let requst = new Request({
         method: "POST",
