@@ -1,4 +1,4 @@
-const EOF = Symbol("EOF");  //end of file
+const EOF = Symbol("EOF");  //EOF: end of file
 
 function data(c) {
 
