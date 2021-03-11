@@ -1,4 +1,4 @@
-// 在字符串中找到 char
+// 在字符串中找到 char  
 function match(str, char) {
     for (let c of str) {
         if (c == char) {
