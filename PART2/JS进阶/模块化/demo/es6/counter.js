@@ -1,6 +1,6 @@
 
-var counter = 1;
-var objCounter = {
+let counter = 1;
+let objCounter = {
     num: 5
 }
 

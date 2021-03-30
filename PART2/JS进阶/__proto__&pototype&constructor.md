@@ -346,7 +346,7 @@ Foo也可以被写为：
 从这个图可以知道，Function是所有大对象的大对象，就是我们所说的大大对象。通过大大对象.protype可以获取到它的原型对象，在原型对象里有
 
 ## 四、总结
-
+__proto__ 并不是语言本身的特性，这是各大厂商具体实现时添加的私有属性，虽然目前很多现代浏览器的 JS 引擎中都提供了这个私有属性，但依旧不建议在生产中使用该属性，避免对环境产生依赖。生产环境中，我们可以使用 Object.getPrototypeOf 方法来获取实例对象的原型，然后再来为原型添加方法/属性。
 ### 1. 图
 
 最后总结先来一张从网上看的图，可以说是把关系画的非常清晰。
@@ -370,8 +370,34 @@ Foo也可以被写为：
 通过尝试实验，搞清楚了原型对象、`__proto__`、`prototype`、`constructor`
 的关系，但是仍然有一些问题需要搞清楚。
 
-### 1. Foo.methods = function() {} 和 Foo.prototype.methods = function() {}区别是什么
+### 1. Foo.methods1 = function() {} 和 Foo.prototype.methods2 = function() {}区别是什么
+答： Foo.methods是静态方法，在class中的定义区别
+```js
+    class Foo {
+        contructor() {
 
+        }
+        static methods1() {
+
+        }
+        methods2() {
+
+        }
+    }
+```
+
+var foo = new Foo()
+
+methods1 调用方式
+```js
+Foo.methods1();
+```
+
+methods2的调用方式
+```js
+foo.methods2();
+```
+如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
 ### 2. 不同的对象里默认的constructor的方法有什么异同，默认prototype有什么异同。
 
 ### 3. 在constuctor里的方法和在原型对象里的方法有什么区别，以Array对象为例
