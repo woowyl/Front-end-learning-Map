@@ -35,4 +35,7 @@
 ## HTTP
 
 1. HTTP协议 rfc2616 
-[HTTP协议标准](https://tools.ietf.org/html/rfc2616)
+[HTTP协议标准](https://tools.ietf.org/html/rfc2616)f
+
+2. 简易版的request和response
+
