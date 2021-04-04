@@ -33,16 +33,27 @@ ${this.bodyText}`
     }
 
     send(connection) {
-        if (connection) {
-            connection.write(this.toString());
-        } else {
-            connection = net.createConnection({
-                host: this.host,
-                port: this.port
-            }, ()=> {
+        return new Promise((resole, reject) => {
+            if (connection) {
                 connection.write(this.toString());
+            } else {
+                connection = net.createConnection({
+                    host: this.host,
+                    port: this.port
+                }, ()=> {
+                    connection.write(this.toString());
+                });
+            }
+            connection.on('data', (data)=> {
+                resole(data.toString());
+                connection.end();
             });
-        }
+            connection.on('error', (err)=> {
+                reject(err.toString());
+                connection.end();
+            });
+        })
+        
     }
 }
 
@@ -110,16 +121,20 @@ client.on('error', (err) => {
 
 */
 
-let request = new Request({
-    method: 'POST',
-    host: '127.0.0.1',
-    port: 3000,
-    path: '/',
-    headers: {
-        ["X-Foo2"]: 'customeer'
-    },
-    body: {
-        name: 'woowyl'
-    }
-})
-request.send();
+void async function() {
+    let request = new Request({
+        method: 'POST',
+        host: '127.0.0.1',
+        port: 3000,
+        path: '/',
+        headers: {
+            ["X-Foo2"]: 'customeer'
+        },
+        body: {
+            name: 'woowyl'
+        }
+    })
+    let response = await request.send();
+    console.log(response);
+}();
+
