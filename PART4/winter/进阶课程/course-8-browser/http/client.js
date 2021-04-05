@@ -62,6 +62,11 @@ class Response {
 }
 
 
+class ResponseParser {
+    
+}
+
+
 /*
 const client = net.createConnection({ 
     host: '127.0.0.1',
