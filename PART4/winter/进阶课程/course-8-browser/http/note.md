@@ -39,3 +39,10 @@
 
 2. 简易版的request和response
 
+- request 格式
+![](./images/request.png)
+
+- response 格式
+![](./images/response.png)
+
+
