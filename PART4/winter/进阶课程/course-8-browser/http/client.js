@@ -182,8 +182,11 @@ class ChunkedBodyParser {
                 }
                 this.current = this.WAITING_LENGTH_LINE_END;
             } else {
-                this.length *= 10;
-                this.length += char.charCodeAt(0) - '0'.charCodeAt(0);
+                // this.length *= 10;
+                // this.length += char.charCodeAt(0) - '0'.charCodeAt(0);
+                // length 这里是16进制需要修改
+                this.length *= 16;
+                this.length += parseInt(char, 16);
             }
         } else if (this.current === this.WAITING_LENGTH_LINE_END) {
             if (char === '\n') {
@@ -191,14 +194,11 @@ class ChunkedBodyParser {
             }
         } else if (this.current === this.READING_CHUNK) {
             this.content.push(char);
-            console.log(JSON.stringify(char), this.length, this.current);
             this.length --;
             if (this.length === 0) {
-                console.log("new line end");
                 this.current = this.WAITING_NEW_LINE_END;
             }
         } else if (this.current === this.WAITING_NEW_LINE_END) {
-            console.log("in new line end");
             if (char === '\n') {
                 this.current = this.WAITING_LENGTH;
             }
