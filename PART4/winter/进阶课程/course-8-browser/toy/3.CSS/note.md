@@ -1,5 +1,5 @@
 # 浏览器工作原理之CSS渲染
-
+依赖一个nodejs包 let css = require('css')
 ### 第一步  收集CSS规则
 - 遇到style标签时，我们把CSS规则保存起来
 - 这里我们调用CSS Parser来分析CSS规则
