@@ -131,6 +131,7 @@ function layout(element) {
     var flexLine = [];
     var flexLines = [flexLine];
 
+    //剩余宽度
     var mainSpace = elementStyle[mainSize];
     var corssSpace = 0;
 
