@@ -21,7 +21,7 @@ function addCSSRules(text) {
 }
 
 // step4
-function match(elememt, selector) {
+function match(element, selector) {
     //step5 补充match中的内容
     if (!selector || !element.attributes)
         return false;
@@ -44,7 +44,7 @@ function match(elememt, selector) {
 }
 
 // step 6
-function specificity() {
+function specificity(selector) {
     //step 7
     var p = [0, 0, 0, 0];
     var selectorParts = selector.split(" ");
@@ -75,12 +75,12 @@ function compare(sp1, sp2) {
 
 
 // step2 
-function computeCSS(elememt) {
+function computeCSS(element) {
     //step 3
-    var elememts = stack.slice().reverse();
+    var elements = stack.slice().reverse();
     //step 4
-    if (!elememt.computedStyle) {
-        elememt.computedStyle = {};
+    if (!element.computedStyle) {
+        element.computedStyle = {};
     }
 
     for (let rule of rules) {
@@ -92,8 +92,8 @@ function computeCSS(elememt) {
         let matched = false;
 
         var j = 1;
-        for (var i = 0; i < elememts.length; i++) {
-            if (match(elememts[i], selectorParts[j])) {
+        for (var i = 0; i < elements.length; i++) {
+            if (match(elements[i], selectorParts[j])) {
                 j++;
             }
         }
@@ -105,7 +105,7 @@ function computeCSS(elememt) {
             //如果匹配到 则加入
             // step 6
             //console.log("Element", element, "matched rule", rule);
-            var sp = specificity(rule.selector[0]);
+            var sp = specificity(rule.selectors[0]);
             var computedStyle = element.computedStyle;
             for (var declaration of rule.declarations) {
                 if (!computedStyle[declaration.property]) {
@@ -128,17 +128,17 @@ function emit(token) {
     let top = stack[stack.length - 1];
     
     if (token.type == "startTag") {
-        let elememt = {
+        let element = {
             type: "element",
             children: [],
             attributes: []
         };
 
-        elememt.tagName = token.tagName;
+        element.tagName = token.tagName;
 
         for (let p in token){
             if (p != "type" && p != "tagName") {
-                elememt.attributes.push({
+                element.attributes.push({
                     name: p,
                     value: token[p]
                 });
@@ -146,13 +146,13 @@ function emit(token) {
         }
         
         // step2 
-        computeCSS(elememt);
+        computeCSS(element);
 
-        top.children.push(elememt);
-        elememt.parent = top;
+        top.children.push(element);
+        element.parent = top;
 
         if (!token.isSelfClosting) {
-            stack.push(elememt);
+            stack.push(element);
         }
 
         currentTextNode = null;
