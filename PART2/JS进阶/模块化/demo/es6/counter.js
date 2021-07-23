@@ -9,7 +9,13 @@ function addCounter() {
     objCounter.num++;
 }
 
-export default {
+// export default {
+//     counter,
+//     objCounter,
+//     addCounter
+// }
+
+export {
     counter,
     objCounter,
     addCounter
