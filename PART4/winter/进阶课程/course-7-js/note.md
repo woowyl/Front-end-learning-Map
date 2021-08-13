@@ -1,7 +1,13 @@
 # JS
 
-- JS Context => 
-
+## JS执行粒度
+- JS Context => Realm
+- 宏任务
+- 微任务
+- 函数调用
+- 语句/声明
+- 表达式
+- 直接量/变量/this
 
 
 ### Realm  从上到下 依此变小
