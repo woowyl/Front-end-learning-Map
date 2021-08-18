@@ -124,7 +124,7 @@ class ResponseParser {
             if (char === '\r') {
                 this.current = this.WAITING_HEADER_BLOCK_END;
                 if (this.headers["Transfer-Encoding"] === "chunked")
-                this.bodyparser = new ChunkedBodyParser();
+                    this.bodyparser = new ChunkedBodyParser();
             } else if (char === ":") {
                 this.current = this.WAITING_HEADER_SPACE;
             } else  {
