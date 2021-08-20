@@ -50,3 +50,4 @@ function foundC(c) {
 
 console.log(match('gegabcdef'));
 console.log(match('aaaabcdef'));
+console.log(match('aaaabcdef'));

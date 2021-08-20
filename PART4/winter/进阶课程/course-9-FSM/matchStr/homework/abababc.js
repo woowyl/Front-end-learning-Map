@@ -1,4 +1,4 @@
-//在字符串中找到“abcabx”
+//在字符串中找到“abababc”
 function match(string) {
     let state = start;
     for (let c of string) {
@@ -29,14 +29,6 @@ function foundA(c) {
 }
 
 function foundB(c) {
-    if (c == 'c') {
-        return foundC;
-    } else {
-        return start(c);
-    }
-}
-
-function foundC(c) {
     if (c == 'a') {
         return foundA2;
     } else {
@@ -53,13 +45,29 @@ function foundA2(c) {
 }
 
 function foundB2(c) {
-    if (c == 'x') {
-        return end;
+    if (c == 'a') {
+        return foundA3;
+    } else {
+        return start(c);
+    }
+}
+
+function foundA3(c) {
+    if (c == 'b') {
+        return foundB3;
     } else {
         return foundB(c);
     }
 }
 
-console.log(match("abcabx"))
-console.log(match("abcabcabx"))
-console.log(match("abaaabcabcabx"))
+function foundB3(c) {
+    if (c == 'c') {
+        return end;
+    } else {
+        return foundB2(c);
+    }
+}
+
+console.log(match("aaabababababc"))
+console.log(match("ababa"))
+console.log(match("abababc"))
