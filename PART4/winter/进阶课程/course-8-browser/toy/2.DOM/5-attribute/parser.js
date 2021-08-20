@@ -84,7 +84,7 @@ function beforeAttributeName(c) {
     } else if (c == "=") {
         // 抛出错误   <html =22>
     } else {
-        currentAttribute= {
+        currentAttribute = {
             name: "",
             value: ""
         }

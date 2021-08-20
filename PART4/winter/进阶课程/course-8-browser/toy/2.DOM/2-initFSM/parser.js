@@ -8,7 +8,7 @@ module.exports.parseHTML = function(html) {
     let state = data;
 
     for (let char of html) {
-        state = state(c)
+        state = state(char)
     }
 
     state = state(EOF);

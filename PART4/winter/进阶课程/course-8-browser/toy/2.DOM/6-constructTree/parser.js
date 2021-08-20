@@ -1,4 +1,4 @@
-let currentToken = null;
+  let currentToken = null;
 let currentAttribute = null;
 
 let stack = [{
