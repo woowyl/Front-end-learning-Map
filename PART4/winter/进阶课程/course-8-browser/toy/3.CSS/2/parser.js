@@ -47,7 +47,9 @@ function emit(token) {
             }
         }
         
-        // step2 
+        // step2 这步骤很关键，设计中并不是在建立完成DOM树之后再计算样式
+        // 而是一个边建立边计算的的过程
+        // 有样式文件进入会引起重绘，所以不要把style标签放在后面  
         computeCSS(elememt);
 
         top.children.push(elememt);

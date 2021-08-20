@@ -22,7 +22,7 @@ function addCSSRules(text) {
 
 // step2 
 function computeCSS(elememt) {
-    //step 3
+    //step 3 匹配顺序是从子到父
     var elememts = stack.slice().reverse();
 }
 
