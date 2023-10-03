@@ -28,13 +28,13 @@
 - 追溯法
   - 源头
   - 官方
-        - https://www.w3.org/
-        - http://w3school.com/
-        - https://whatwg.org/
-        - https://scholar.google.com/
-        - https://developer.mozilla.org/
-        - https://docs.microsoft.com/
-        - https://developer.apple.com/
+    -  https://www.w3.org/
+    -  http://w3school.com/
+    -  https://whatwg.org/
+    -  https://scholar.google.com/
+    -  https://developer.mozilla.org/
+    -  https://docs.microsoft.com/
+    -  https://developer.apple.com/
   - 大师
     - Tim Berners-Lee
     - Brendan Eich
