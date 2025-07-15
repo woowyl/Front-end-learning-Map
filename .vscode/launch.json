@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "调试任意子目录的 TS 文件",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "-r",
+        "${fileDirname}/node_modules/ts-node/register"
+      ],
+      "args": [
+        "${file}"
+      ],
+      "cwd": "${fileDirname}",
+      "env": {
+        "TS_NODE_PROJECT": "${fileDirname}/tsconfig.json"
+      },
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

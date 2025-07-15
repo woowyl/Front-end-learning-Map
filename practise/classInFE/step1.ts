@@ -1,11 +1,25 @@
-function Person(name: string, age: number) {
+interface PersonInstance {
+  name: string;
+  age: number;
+  sayHello: () => void;
+}
+
+interface PersonConstructor {
+  new (name: string, age: number): PersonInstance;
+}
+
+const Person: PersonConstructor = function(this: PersonInstance, name: string, age: number) {
+    // 确保使用 new 调用构造函数
+    if (!new.target) {
+      throw new Error("Step must be called with new");
+    }
     this.name = name;
     this.age = age;
 
     this.sayHello = function() {
-        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+      console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
     };
-}
+} as any;
 
 
 let person1 = new Person("Alice", 30);
